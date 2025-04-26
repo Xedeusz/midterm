@@ -22,51 +22,14 @@
             overflow-x: hidden;
             scroll-behavior: smooth;
         }
-        /* Lightning Background */
-        .lightning-background {
+        /* Vanta Background */
+        #vanta-background {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, rgba(30, 15, 60, 0.8), rgba(10, 0, 30, 0.9));
             z-index: -1;
-            overflow: hidden;
-        }
-        .lightning-background::before,
-        .lightning-background::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at center, rgba(61, 0, 80, 0.3), transparent);
-            opacity: 0;
-            animation: lightning-flash 4s infinite;
-        }
-        .lightning-background::after {
-            animation-delay: .5s;
-        }
-        .lightning-streak {
-            position: absolute;
-            width: 2px;
-            height: 100%;
-            background: linear-gradient(to bottom, #3b003dd7, #f8f8f8);
-            opacity: 0;
-            animation: lightning-streak 3s infinite;
-        }
-        .lightning-streak:nth-child(2) { left: 30%; animation-delay: 1s; }
-        .lightning-streak:nth-child(3) { left: 60%; animation-delay: 2.5s; }
-        .lightning-streak:nth-child(4) { left: 90%; animation-delay: 1.5s; }
-        @keyframes lightning-flash {
-            0%, 90%, 100% { opacity: 0; }
-            5%, 10% { opacity: 0.6; }
-        }
-        @keyframes lightning-streak {
-            0%, 85%, 100% { opacity: 0; transform: translateY(-100%); }
-            5% { opacity: 0.8; transform: translateY(0); }
-            10% { opacity: 0.4; transform: translateY(50%); }
         }
         /* Sidebar Navigation */
         .sidebar {
@@ -333,6 +296,10 @@
             font-size: 1.2rem;
             box-shadow: 0 0 10px #A855F7;
         }
+        /* Add gap between My Life and Certifications */
+        .content-card.certifications-card {
+            margin-top: 2rem; /* Adds vertical gap between My Life and Certifications */
+        }
         /* Skills Bar */
         .skill {
             margin-bottom: 15px;
@@ -516,12 +483,7 @@
     </style>
 </head>
 <body>
-    <div class="lightning-background">
-        <div class="lightning-streak"></div>
-        <div class="lightning-streak"></div>
-        <div class="lightning-streak"></div>
-        <div class="lightning-streak"></div>
-    </div>
+    <div id="vanta-background"></div>
     <!-- Sidebar Navigation -->
     <div class="nav-toggle">
         <span></span>
@@ -535,7 +497,6 @@
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
             <li><a href="photos.html">Photos</a></li>
-       
         </ul>
     </nav>
     <main>
@@ -552,7 +513,7 @@
             <h2 class="section-title" data-aos="fade-up">About Me</h2>
             <div class="content-grid">
                 <!-- About Me -->
-                <div class="content-card  font-family: Montserrat, sans-serif " data-aos="fade-up">
+                <div class="content-card font-family: Montserrat, sans-serif " data-aos="fade-up">
                     <div class="icon"><i class="bi bi-person-fill"></i></div>
                     <h3>Who is Dexter?</h3>
                     <p>I'm an aspiring IT professional pursuing my degree, driven to build a meaningful career in tech. My journey in web development is just beginning, but I'm captivated by the process of transforming code into functional, user-friendly websites.</p>
@@ -602,8 +563,8 @@
                         <div class="col-6">
                             <img src="assets/mlbb.jpg" alt="Manga" class="interest-img">
                             <small class="text-muted mt-2 d-block">Manga Pages</small>
-                            </div>
                         </div>
+                    </div>
                 </div>
                 <!-- Education -->
                 <div class="content-card education-card" data-aos="fade-up" data-aos-delay="300">
@@ -649,7 +610,6 @@
                             <p>This are the projects i made and published.</p>
                             <a href="https://github.com/Xedeusz?tab=repositories" target="_blank" class="btn btn-electric">View Project</a>
                         </div>
-                        </div>
                     </div>
                 </div>
                 <!-- My Life -->
@@ -659,7 +619,6 @@
                     <p>Explore some of my favorite moments through photos and videos!</p>
                     <div class="d-flex justify-content-center mb-3">
                         <a href="photos.html" class="btn justify-content btn-electric">View Moments</a>
-                    
                     </div>
                     <div class="row g-3">
                         <div class="col-6 col-md-4">
@@ -695,7 +654,7 @@
                     <div class="skill"><p>PHP & MySQL</p><div class="bar"><div style="width: 80%"></div></div></div>
                 </div>
                 <!-- Achievements -->
-                <div class="content-card" data-aos="fade-up" data-aos-delay="800">
+                <div class="content-card certifications-card" data-aos="fade-up" data-aos-delay="800">
                     <div class="icon"><i class="bi bi-award-fill"></i></div>
                     <h3>Certifications & Achievements</h3>
                     <ul>
@@ -733,7 +692,6 @@
                 <a href="#about">About</a><br>
                 <a href="#contact">Contact</a><br>
                 <a href="photos.html">Photos</a><br>
-    
             </div>
             <div>
                 <h5>Connect</h5>
@@ -750,8 +708,26 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.trunk.min.js"></script>
     <script>
         AOS.init({ duration: 800, once: true });
+
+        // Vanta.js TRUNK Background
+        VANTA.TRUNK({
+            el: "#vanta-background",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            color: 0x7500cd,
+            backgroundColor: 0x1b1b1b,
+            spacing: 7.00,
+            chaos: 7.50
+        });
 
         const navToggle = document.querySelector('.nav-toggle');
         const sidebar = document.querySelector('.sidebar');
@@ -785,4 +761,4 @@
         });
     </script>
 </body>
-</html> 
+</html>
