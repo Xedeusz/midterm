@@ -34,6 +34,11 @@
             text-align: center;
             position: relative;
             letter-spacing: 2px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .logo:hover {
+            transform: scale(1.05);
         }
         .logo::before {
             content: '';
@@ -48,20 +53,50 @@
             box-shadow: 0 0 20px #A855F7, 0 0 30px #64107e;
             z-index: -1;
         }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 20px;
+            cursor: pointer;
+            z-index: 101;
+        }
+        .nav-toggle span {
+            width: 100%;
+            height: 3px;
+            background: #A855F7;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        .nav-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .nav-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .nav-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
         nav ul {
             list-style: none;
             display: flex;
             justify-content: center;
             gap: 2.5rem;
-            margin-top: 1rem;
             background: linear-gradient(45deg, rgba(30, 15, 60, 0.9), rgba(10, 0, 30, 0.9));
             padding: 0.7rem 1.5rem;
             border-radius: 30px;
             border: 2px solid #A855F7;
             box-shadow: 0 0 15px #64107e, inset 0 0 10px rgba(168, 85, 247, 0.3);
+            transition: all 0.3s ease;
         }
         nav a {
-            color: #727272;
+            color: #E5E7EB;
             text-decoration: none;
             font-family: 'Orbitron', sans-serif;
             font-size: 1.2rem;
@@ -79,11 +114,12 @@
             transform: translateX(-50%);
             width: 0;
             height: 3px;
+            background: #A855F7;
             transition: width 0.3s ease;
         }
         nav a:hover {
-            color: #cb97d8;
-            text-shadow: 0 0 15px #ffffff, 0 0 25px #ffffff;
+            color: #FFFFFF;
+            text-shadow: 0 0 15px #A855F7, 0 0 25px #A855F7;
             background: rgba(168, 85, 247, 0.3);
             animation: electric-crackle 0.5s infinite;
         }
@@ -92,12 +128,12 @@
         }
         @keyframes electric-crackle {
             0%, 100% { box-shadow: 0 0 5px #A855F7; }
-            50% { box-shadow: 0 0 15px #37004d57, 0 0 25px #A855F7; }
+            50% { box-shadow: 0 0 15px #A855F7, 0 0 25px #A855F7; }
         }
         .hero {
-            background: linear-gradient(to bottom, rgba(30, 15, 60, 0.8), rgba(10, 0, 30, 0.9)), url('gojo2.jpg') no-repeat center center fixed;
+            background: linear-gradient(to bottom, rgba(30, 15, 60, 0.8), rgba(10, 0, 30, 0.9)), url('assets/gojo2.jpg') no-repeat center center fixed;
             background-size: cover;
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -105,6 +141,7 @@
             text-align: center;
             position: relative;
             overflow: hidden;
+            padding: 2rem;
         }
         .hero::before {
             content: '';
@@ -114,18 +151,24 @@
             width: 100%;
             height: 100%;
             background: radial-gradient(circle, rgba(168, 85, 247, 0.2), transparent);
+            z-index: 0;
         }
         .hero .photo-frame {
-            width: 200px;
-            height: 200px;
+            width: 220px;
+            height: 220px;
             border: 4px solid #A855F7;
-            border-radius: 15px;
-            box-shadow: 0 0 20px #A855F7, 0 0 40px #64107e;
-            margin-bottom: 1.5rem;
+            border-radius: 20px;
+            box-shadow: 0 0 25px #A855F7, 0 0 50px #64107e;
+            margin-bottom: 2rem;
             z-index: 1;
             overflow: hidden;
             position: relative;
             background: #1E1E3A;
+            transition: transform 0.3s ease;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        .hero .photo-frame:hover {
+            transform: scale(1.05);
         }
         .hero .photo-frame img {
             width: 100%;
@@ -146,33 +189,35 @@
         }
         .hero h1 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 4.5rem;
+            font-size: 5rem;
             color: #FFFFFF;
-            text-shadow: 0 0 20px #A855F7, 0 0 40px #64107e;
+            text-shadow: 0 0 25px #A855F7, 0 0 50px #64107e;
             z-index: 1;
-            margin-bottom: 1.5rem;
-            letter-spacing: 3px;
+            margin-bottom: 2rem;
+            letter-spacing: 4px;
+            animation: fadeIn 2s ease-in-out;
         }
         .hero .cta {
-            padding: 1rem 2rem;
+            padding: 1.2rem 2.5rem;
             background: linear-gradient(45deg, #A855F7, #64107e);
             color: #FFFFFF;
             text-decoration: none;
-            border-radius: 30px;
+            border-radius: 50px;
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.3rem;
-            box-shadow: 0 0 20px #A855F7, 0 0 30px #64107e;
+            font-size: 1.4rem;
+            box-shadow: 0 0 25px #A855F7, 0 0 40px #64107e;
             transition: all 0.3s ease;
             z-index: 1;
+            animation: fadeIn 2.5s ease-in-out;
         }
         .hero .cta:hover {
-            transform: scale(1.15);
-            box-shadow: 0 0 30px #070070, 0 0 50px #A855F7;
-            background: linear-gradient(45deg, #2f00af, #c90000b7);
+            transform: scale(1.1);
+            box-shadow: 0 0 40px #A855F7, 0 0 60px #64107e;
+            background: linear-gradient(45deg, #64107e, #A855F7);
         }
         footer {
             background: linear-gradient(90deg, #2A0A3A, #0A0015);
-            padding: 1.5rem;
+            padding: 2rem;
             text-align: center;
             position: relative;
             box-shadow: 0 0 20px rgba(168, 85, 247, 0.7);
@@ -180,9 +225,9 @@
         }
         footer p {
             font-family: 'Montserrat', sans-serif;
-            font-size: 1rem;
+            font-size: 1.1rem;
             color: #E5E7EB;
-            text-shadow: 0 0 8px #A855F7, 0 0 15px #64107e;
+            text-shadow: 0 0 10px #A855F7, 0 0 20px #64107e;
             position: relative;
             z-index: 1;
         }
@@ -193,8 +238,8 @@
             left: -100%;
             width: 300%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.2), transparent);
-            animation: electric-wave 6s linear infinite;
+            background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.3), transparent);
+            animation: electric-wave 5s linear infinite;
         }
         @keyframes electric-wave {
             0% { transform: translateX(-100%); }
@@ -202,8 +247,12 @@
         }
         @keyframes lightning {
             0%, 100% { opacity: 0; }
-            10%, 50% { opacity: 0.8; }
-            30%, 70% { opacity: 0.3; }
+            10%, 50% { opacity: 0.7; }
+            30%, 70% { opacity: 0.2; }
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
         .lightning-effect {
             position: absolute;
@@ -213,90 +262,90 @@
             height: 100%;
             background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent);
             opacity: 0;
-            animation: lightning 2s infinite;
+            animation: lightning 2.5s infinite;
             pointer-events: none;
+            z-index: 0;
         }
         @media (max-width: 768px) {
             header {
-                padding: 0.5rem;
+                padding: 0.8rem;
             }
             .logo {
                 font-size: 1.8rem;
-                padding: 0.5rem;
             }
-            .logo::before {
-                top: -8px;
-                border: 2px solid #A855F7;
+            .nav-toggle {
+                display: flex;
             }
             nav ul {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 250px;
                 flex-direction: column;
-                gap: 0.8rem;
-                padding: 0.5rem;
-                margin-top: 0.5rem;
+                align-items: center;
+                justify-content: center;
+                background: linear-gradient(90deg, #2A0A3A, #1E1E3A);
+                border-left: 2px solid #A855F7;
+                box-shadow: -5px 0 20px rgba(168, 85, 247, 0.7);
+                transition: right 0.3s ease;
+                z-index: 100;
+                margin-top: 0;
+            }
+            nav ul.active {
+                right: 0;
             }
             nav a {
-                font-size: 1rem;
-                padding: 0.5rem 1rem;
-            }
-            .hero {
-                height: 100vh;
+                font-size: 1.3rem;
                 padding: 1rem;
             }
+            .hero {
+                min-height: 80vh;
+                padding: 1.5rem;
+            }
             .hero h1 {
-                font-size: 2.5rem;
-                margin-bottom: 1rem;
+                font-size: 3rem;
+                margin-bottom: 1.5rem;
                 letter-spacing: 2px;
             }
             .hero .photo-frame {
-                width: 150px;
-                height: 150px;
+                width: 180px;
+                height: 180px;
+            }
+            .hero .cta {
+                font-size: 1.2rem;
+                padding: 1rem 2rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.5rem;
+            }
+            .logo::before {
+                top: -8px;
+                height: 120%;
+            }
+            nav ul {
+                width: 200px;
+            }
+            nav a {
+                font-size: 1.1rem;
+                padding: 0.8rem;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
                 margin-bottom: 1rem;
+            }
+            .hero .photo-frame {
+                width: 140px;
+                height: 140px;
             }
             .hero .cta {
                 font-size: 1rem;
                 padding: 0.8rem 1.5rem;
             }
-            footer {
-                padding: 1rem;
-            }
             footer p {
                 font-size: 0.9rem;
-            }
-        }
-        @media (max-width: 480px) {
-            .logo {
-                font-size: 1.4rem;
-                padding: 0.3rem;
-            }
-            .logo::before {
-                top: -6px;
-                border: 2px solid #A855F7;
-                height: 120%;
-            }
-            nav ul {
-                gap: 0.5rem;
-                padding: 0.4rem;
-            }
-            nav a {
-                font-size: 0.9rem;
-                padding: 0.4rem 0.8rem;
-            }
-            .hero h1 {
-                font-size: 1.8rem;
-                margin-bottom: 0.8rem;
-                letter-spacing: 1px;
-            }
-            .hero .photo-frame {
-                width: 120px;
-                height: 120px;
-                margin-bottom: 0.8rem;
-            }
-            .hero .cta {
-                font-size: 0.9rem;
-                padding: 0.6rem 1.2rem;
-            }
-            footer p {
-                font-size: 0.8rem;
             }
         }
     </style>
@@ -304,7 +353,12 @@
 <body>
     <header>
         <nav>
-            <div class="logo">Welcome To Dexter's Domain</div>
+            <div class="logo">Dexter's Domain</div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
             <ul>
                 <li><a href="main.html">Home</a></li>
                 <li><a href="main.html">About</a></li>
@@ -317,14 +371,39 @@
         <section class="hero">
             <div class="lightning-effect"></div>
             <div class="photo-frame">
-                <img src="me.jpg" alt="Your Personal Photo">
+                <img src="assets/me.jpg" alt="Your Personal Photo">
             </div>
-            <h1>Welcome To My Personal Domain</h1>
+            <h1>Welcome To My Domain</h1>
             <a href="main.html" class="cta">Enter My Domain</a>
         </section>
     </main>
     <footer>
-        <p>© 2025 Xedeusz All Rights Reserved.</p>
+        <p>© 2025 Xedeusz. All Rights Reserved.</p>
     </footer>
+    <script>
+        const navToggle = document.querySelector('.nav-toggle');
+        const navMenu = document.querySelector('nav ul');
+
+        navToggle.addEventListener('click', () => {
+            navToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                navToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navMenu.contains(e.target) && !navToggle.contains(e.target) && navMenu.classList.contains('active')) {
+                navToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>
