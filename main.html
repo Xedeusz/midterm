@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dexter's Domain - Main</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Montserrat:wght@400;700&family=Anton&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -22,7 +22,7 @@
             overflow-x: hidden;
             scroll-behavior: smooth;
         }
-        /* Vanta Background */
+        /* Shooting Star Background */
         #vanta-background {
             position: fixed;
             top: 0;
@@ -30,6 +30,251 @@
             width: 100%;
             height: 100%;
             z-index: -1;
+            background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+            transform: rotateZ(45deg);
+        }
+        .night {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        .shooting_star {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            height: 2px;
+            background: linear-gradient(-45deg, rgba(95, 145, 255, 1), rgba(0, 0, 255, 0));
+            border-radius: 999px;
+            filter: drop-shadow(0 0 6px rgba(105, 155, 255, 1));
+            animation: tail 3000ms ease-in-out infinite, shooting 3000ms ease-in-out infinite;
+        }
+        .shooting_star::before,
+        .shooting_star::after {
+            content: '';
+            position: absolute;
+            top: calc(50% - 1px);
+            right: 0;
+            height: 2px;
+            background: linear-gradient(-45deg, rgba(0, 0, 255, 0), rgba(95, 145, 255, 1), rgba(0, 0, 255, 0));
+            border-radius: 100%;
+            animation: shining 3000ms ease-in-out infinite;
+        }
+        .shooting_star::before {
+            transform: translateX(50%) rotateZ(45deg);
+        }
+        .shooting_star::after {
+            transform: translateX(50%) rotateZ(-45deg);
+        }
+        /* Generate styles for 20 shooting stars */
+        .shooting_star:nth-child(1) {
+            top: calc(50% - 100px);
+            left: calc(50% - 200px);
+            animation-delay: 1234ms;
+        }
+        .shooting_star:nth-child(1)::before,
+        .shooting_star:nth-child(1)::after {
+            animation-delay: 1234ms;
+        }
+        .shooting_star:nth-child(2) {
+            top: calc(50% - 50px);
+            left: calc(50% - 150px);
+            animation-delay: 5678ms;
+        }
+        .shooting_star:nth-child(2)::before,
+        .shooting_star:nth-child(2)::after {
+            animation-delay: 5678ms;
+        }
+        .shooting_star:nth-child(3) {
+            top: calc(50% - 200px);
+            left: calc(50% - 100px);
+            animation-delay: 2345ms;
+        }
+        .shooting_star:nth-child(3)::before,
+        .shooting_star:nth-child(3)::after {
+            animation-delay: 2345ms;
+        }
+        .shooting_star:nth-child(4) {
+            top: calc(50% - 150px);
+            left: calc(50% - 250px);
+            animation-delay: 7890ms;
+        }
+        .shooting_star:nth-child(4)::before,
+        .shooting_star:nth-child(4)::after {
+            animation-delay: 7890ms;
+        }
+        .shooting_star:nth-child(5) {
+            top: calc(50% - 80px);
+            left: calc(50% - 300px);
+            animation-delay: 3456ms;
+        }
+        .shooting_star:nth-child(5)::before,
+        .shooting_star:nth-child(5)::after {
+            animation-delay: 3456ms;
+        }
+        .shooting_star:nth-child(6) {
+            top: calc(50% - 120px);
+            left: calc(50% - 180px);
+            animation-delay: 9012ms;
+        }
+        .shooting_star:nth-child(6)::before,
+        .shooting_star:nth-child(6)::after {
+            animation-delay: 9012ms;
+        }
+        .shooting_star:nth-child(7) {
+            top: calc(50% - 60px);
+            left: calc(50% - 220px);
+            animation-delay: 4567ms;
+        }
+        .shooting_star:nth-child(7)::before,
+        .shooting_star:nth-child(7)::after {
+            animation-delay: 4567ms;
+        }
+        .shooting_star:nth-child(8) {
+            top: calc(50% - 180px);
+            left: calc(50% - 140px);
+            animation-delay: 6789ms;
+        }
+        .shooting_star:nth-child(8)::before,
+        .shooting_star:nth-child(8)::after {
+            animation-delay: 6789ms;
+        }
+        .shooting_star:nth-child(9) {
+            top: calc(50% - 90px);
+            left: calc(50% - 260px);
+            animation-delay: 123ms;
+        }
+        .shooting_star:nth-child(9)::before,
+        .shooting_star:nth-child(9)::after {
+            animation-delay: 123ms;
+        }
+        .shooting_star:nth-child(10) {
+            top: calc(50% - 140px);
+            left: calc(50% - 170px);
+            animation-delay: 8901ms;
+        }
+        .shooting_star:nth-child(10)::before,
+        .shooting_star:nth-child(10)::after {
+            animation-delay: 8901ms;
+        }
+        .shooting_star:nth-child(11) {
+            top: calc(50% - 110px);
+            left: calc(50% - 210px);
+            animation-delay: 234ms;
+        }
+        .shooting_star:nth-child(11)::before,
+        .shooting_star:nth-child(11)::after {
+            animation-delay: 234ms;
+        }
+        .shooting_star:nth-child(12) {
+            top: calc(50% - 70px);
+            left: calc(50% - 190px);
+            animation-delay: 567ms;
+        }
+        .shooting_star:nth-child(12)::before,
+        .shooting_star:nth-child(12)::after {
+            animation-delay: 567ms;
+        }
+        .shooting_star:nth-child(13) {
+            top: calc(50% - 160px);
+            left: calc(50% - 130px);
+            animation-delay: 789ms;
+        }
+        .shooting_star:nth-child(13)::before,
+        .shooting_star:nth-child(13)::after {
+            animation-delay: 789ms;
+        }
+        .shooting_star:nth-child(14) {
+            top: calc(50% - 130px);
+            left: calc(50% - 240px);
+            animation-delay: 901ms;
+        }
+        .shooting_star:nth-child(14)::before,
+        .shooting_star:nth-child(14)::after {
+            animation-delay: 901ms;
+        }
+        .shooting_star:nth-child(15) {
+            top: calc(50% - 85px);
+            left: calc(50% - 160px);
+            animation-delay: 345ms;
+        }
+        .shooting_star:nth-child(15)::before,
+        .shooting_star:nth-child(15)::after {
+            animation-delay: 345ms;
+        }
+        .shooting_star:nth-child(16) {
+            top: calc(50% - 190px);
+            left: calc(50% - 200px);
+            animation-delay: 678ms;
+        }
+        .shooting_star:nth-child(16)::before,
+        .shooting_star:nth-child(16)::after {
+            animation-delay: 678ms;
+        }
+        .shooting_star:nth-child(17) {
+            top: calc(50% - 95px);
+            left: calc(50% - 270px);
+            animation-delay: 1234ms;
+        }
+        .shooting_star:nth-child(17)::before,
+        .shooting_star:nth-child(17)::after {
+            animation-delay: 1234ms;
+        }
+        .shooting_star:nth-child(18) {
+            top: calc(50% - 125px);
+            left: calc(50% - 110px);
+            animation-delay: 5678ms;
+        }
+        .shooting_star:nth-child(18)::before,
+        .shooting_star:nth-child(18)::after {
+            animation-delay: 5678ms;
+        }
+        .shooting_star:nth-child(19) {
+            top: calc(50% - 175px);
+            left: calc(50% - 230px);
+            animation-delay: 2345ms;
+        }
+        .shooting_star:nth-child(19)::before,
+        .shooting_star:nth-child(19)::after {
+            animation-delay: 2345ms;
+        }
+        .shooting_star:nth-child(20) {
+            top: calc(50% - 105px);
+            left: calc(50% - 180px);
+            animation-delay: 7890ms;
+        }
+        .shooting_star:nth-child(20)::before,
+        .shooting_star:nth-child(20)::after {
+            animation-delay: 7890ms;
+        }
+        @keyframes tail {
+            0% {
+                width: 0;
+            }
+            30% {
+                width: 100px;
+            }
+            100% {
+                width: 0;
+            }
+        }
+        @keyframes shining {
+            0% {
+                width: 0;
+            }
+            50% {
+                width: 30px;
+            }
+            100% {
+                width: 0;
+            }
+        }
+        @keyframes shooting {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(300px);
+            }
         }
         /* Sidebar Navigation */
         .sidebar {
@@ -240,7 +485,7 @@
         .section-title {
             font-family: 'Orbitron', sans-serif;
             font-size: 2.5rem;
-            color: #000000;
+            color: #A855F7;
             text-shadow: 0 0 10px #A855F7;
             margin-bottom: 2rem;
             text-align: center;
@@ -483,7 +728,28 @@
     </style>
 </head>
 <body>
-    <div id="vanta-background"></div>
+    <div id="vanta-background" class="night">
+        <div class="shooting_star"></div>
+        <div class="shooting_star"></div>
+        <div class="shooting_star"></div>
+        <div class="shooting_star"></div>
+        <div class="shooting_star"></div>
+        <div class="shooting_star"></div>
+        <div class="shooting_star"></div>
+        <div class="shooting_star"></div>
+        <div class="shooting_star"></div>
+        <div class="shooting_star"></div>
+        <div class="shooting_star"></div>
+        <div class="shooting_star"></div>
+        <div class="shooting_star"></div>
+        <div class="shooting_star"></div>
+        <div class="shooting_star"></div>
+        <div class="shooting_star"></div>
+        <div class="shooting_star"></div>
+        <div class="shooting_star"></div>
+        <div class="shooting_star"></div>
+        <div class="shooting_star"></div>
+    </div>
     <!-- Sidebar Navigation -->
     <div class="nav-toggle">
         <span></span>
@@ -708,27 +974,8 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.fog.min.js"></script>
     <script>
         AOS.init({ duration: 800, once: true });
-
-        // Vanta.js FOG Background
-        VANTA.FOG({
-            el: "#vanta-background",
-            mouseControls: true,
-            touchControls: true,
-            gyroControls: false,
-            minHeight: 200.00,
-            minWidth: 200.00,
-            highlightColor: 0xe000ff,
-            midtoneColor: 0xff00f0,
-            lowlightColor: 0xffffff,
-            baseColor: 0x141414,
-            blurFactor: 0.51,
-            speed: 2.00,
-            zoom: 1.70
-        });
 
         const navToggle = document.querySelector('.nav-toggle');
         const sidebar = document.querySelector('.sidebar');
