@@ -17,6 +17,62 @@
             color: #E5E7EB;
             line-height: 1.6;
             overflow-x: hidden;
+            position: relative;
+        }
+        /* Purple Lightning Background for Entire Website */
+        .lightning-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(30, 15, 60, 0.8), rgba(10, 0, 30, 0.9));
+            z-index: -1;
+            overflow: hidden;
+        }
+        .lightning-background::before,
+        .lightning-background::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(61, 0, 80, 0.3), transparent);
+            opacity: 0;
+            animation: lightning-flash 4s infinite;
+        }
+        .lightning-background::after {
+            animation-delay: .5s;
+        }
+        .lightning-streak {
+            position: absolute;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, #3b003dd7, #f8f8f8);
+            opacity: 0;
+            animation: lightning-streak 3s infinite;
+        }
+        .lightning-streak:nth-child(2) {
+            left: 30%;
+            animation-delay: 1s;
+        }
+        .lightning-streak:nth-child(3) {
+            left: 60%;
+            animation-delay: 2.5s;
+        }
+        .lightning-streak:nth-child(4) {
+            left: 90%;
+            animation-delay: 1.5s;
+        }
+        @keyframes lightning-flash {
+            0%, 90%, 100% { opacity: 0; }
+            5%, 10% { opacity: 0.6; }
+        }
+        @keyframes lightning-streak {
+            0%, 85%, 100% { opacity: 0; transform: translateY(-100%); }
+            5% { opacity: 0.8; transform: translateY(0); }
+            10% { opacity: 0.4; transform: translateY(50%); }
         }
         header {
             position: sticky;
@@ -48,9 +104,8 @@
             transform: translateX(-50%);
             width: 100%;
             height: 130%;
-            border: 3px solid #A855F7;
-            border-radius: 12px;
-            box-shadow: 0 0 20px #A855F7, 0 0 30px #64107e;
+        
+     
             z-index: -1;
         }
         nav {
@@ -131,8 +186,6 @@
             50% { box-shadow: 0 0 15px #A855F7, 0 0 25px #A855F7; }
         }
         .hero {
-            background: linear-gradient(to bottom, rgba(30, 15, 60, 0.8), rgba(10, 0, 30, 0.9)), url('assets/gojo2.jpg') no-repeat center center fixed;
-            background-size: cover;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -142,6 +195,7 @@
             position: relative;
             overflow: hidden;
             padding: 2rem;
+            z-index: 1;
         }
         .hero::before {
             content: '';
@@ -222,6 +276,7 @@
             position: relative;
             box-shadow: 0 0 20px rgba(168, 85, 247, 0.7);
             overflow: hidden;
+            z-index: 1;
         }
         footer p {
             font-family: 'Montserrat', sans-serif;
@@ -351,6 +406,12 @@
     </style>
 </head>
 <body>
+    <div class="lightning-background">
+        <div class="lightning-streak"></div>
+        <div class="lightning-streak"></div>
+        <div class="lightning-streak"></div>
+        <div class="lightning-streak"></div>
+    </div>
     <header>
         <nav>
             <div class="logo">Dexter's Domain</div>
