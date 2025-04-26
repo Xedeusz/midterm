@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dexter's Domain - Intro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(to bottom, #1E1E3A, #0A0015);
+            color: #E5E7EB;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        header {
+            position: sticky;
+            top: 0;
+            background: linear-gradient(90deg, #2A0A3A, #1E1E3A);
+            padding: 1rem;
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.7);
+            z-index: 100;
+        }
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.2rem;
+            color: #D8BFD8;
+            text-shadow: 0 0 12px #A855F7, 0 0 25px #A855F7;
+            text-align: center;
+            position: relative;
+            letter-spacing: 2px;
+        }
+        .logo::before {
+            content: '';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            height: 130%;
+            border: 3px solid #A855F7;
+            border-radius: 12px;
+            box-shadow: 0 0 20px #A855F7, 0 0 30px #64107e;
+            z-index: -1;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            margin-top: 1rem;
+            background: linear-gradient(45deg, rgba(30, 15, 60, 0.9), rgba(10, 0, 30, 0.9));
+            padding: 0.7rem 1.5rem;
+            border-radius: 30px;
+            border: 2px solid #A855F7;
+            box-shadow: 0 0 15px #64107e, inset 0 0 10px rgba(168, 85, 247, 0.3);
+        }
+        nav a {
+            color: #727272;
+            text-decoration: none;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+            
+        }
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+    
+            transition: width 0.3s ease;
+        }
+        nav a:hover {
+            color: #cb97d8;
+            text-shadow: 0 0 15px #ffffff, 0 0 25px #ffffff;
+            background: rgba(168, 85, 247, 0.3);
+            animation: electric-crackle 0.5s infinite;
+        }
+        nav a:hover::after {
+            width: 90%;
+        }
+        @keyframes electric-crackle {
+            0%, 100% { box-shadow: 0 0 5px #A855F7; }
+            50% { box-shadow: 0 0 15px #37004d57, 0 0 25px #A855F7; }
+        }
+        .hero {
+            background: linear-gradient(to bottom, rgba(30, 15, 60, 0.8), rgba(10, 0, 30, 0.9)), url('gojo2.jpg') no-repeat center center fixed;
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.2), transparent);
+        }
+        .hero .photo-frame {
+            width: 200px;
+            height: 200px;
+            border: 4px solid #A855F7;
+            border-radius: 15px;
+            box-shadow: 0 0 20px #A855F7, 0 0 40px #64107e;
+            margin-bottom: 1.5rem;
+            z-index: 1;
+            overflow: hidden;
+            position: relative;
+            background: #1E1E3A;
+        }
+        .hero .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .hero .photo-frame::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent);
+            opacity: 0;
+            animation: lightning 3s infinite;
+        }
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4.5rem;
+            color: #FFFFFF;
+            text-shadow: 0 0 20px #A855F7, 0 0 40px #64107e;
+            z-index: 1;
+            margin-bottom: 1.5rem;
+            letter-spacing: 3px;
+        }
+        .hero .cta {
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, #A855F7, #64107e);
+            color: #FFFFFF;
+            text-decoration: none;
+            border-radius: 30px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            box-shadow: 0 0 20px #A855F7, 0 0 30px #64107e;
+            transition: all 0.3s ease;
+            z-index: 1;
+            
+        }
+        .hero .cta:hover {
+            transform: scale(1.15);
+            box-shadow: 0 0 30px #070070, 0 0 50px #A855F7;
+            background: linear-gradient(45deg, #2f00af, #c90000b7);
+        }
+        footer {
+            background: linear-gradient(90deg, #2A0A3A, #0A0015);
+            padding: 1.5rem;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.7);
+            overflow: hidden;
+        }
+        footer p {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            color: #E5E7EB;
+            text-shadow: 0 0 8px #A855F7, 0 0 15px #64107e;
+            position: relative;
+            z-index: 1;
+        }
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 300%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.2), transparent);
+            animation: electric-wave 6s linear infinite;
+        }
+        @keyframes electric-wave {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        @keyframes lightning {
+            0%, 100% { opacity: 0; }
+            10%, 50% { opacity: 0.8; }
+            30%, 70% { opacity: 0.3; }
+        }
+        .lightning-effect {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent);
+            opacity: 0;
+            animation: lightning 2s infinite;
+            pointer-events: none;
+        }
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            .hero .photo-frame {
+                width: 150px;
+                height: 150px;
+            }
+            .hero .cta {
+                font-size: 1rem;
+                padding: 0.8rem 1.5rem;
+            }
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 0.5rem;
+            }
+            nav a {
+                font-size: 1rem;
+                padding: 0.5rem;
+            }
+            .logo {
+                font-size: 1.5rem;
+            }
+            footer p {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Welcome To Dexter's Domain</div>
+            <ul>
+                <li><a href="main.html">Home</a></li>
+                <li><a href="main.html">About</a></li>
+                <li><a href="main.html">Videos</a></li>
+                <li><a href="main.html">Photos</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="hero">
+            <div class="lightning-effect"></div>
+            <div class="photo-frame">
+                <img src="me.jpg" alt="Your Personal Photo">
+            </div>
+            <h1>Welcome To My Personal Domain</h1>
+            <a href="main.html" class="cta">Enter My Domain</a>
+        </section>
+    </main>
+    <footer>
+        <p>© 2025 Xedeusz All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
