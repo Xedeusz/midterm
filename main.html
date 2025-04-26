@@ -20,7 +20,6 @@
             color: #E5E7EB;
             line-height: 1.6;
             overflow-x: hidden;
-            position: relative;
             scroll-behavior: smooth;
         }
         /* Lightning Background */
@@ -57,18 +56,9 @@
             opacity: 0;
             animation: lightning-streak 3s infinite;
         }
-        .lightning-streak:nth-child(2) {
-            left: 30%;
-            animation-delay: 1s;
-        }
-        .lightning-streak:nth-child(3) {
-            left: 60%;
-            animation-delay: 2.5s;
-        }
-        .lightning-streak:nth-child(4) {
-            left: 90%;
-            animation-delay: 1.5s;
-        }
+        .lightning-streak:nth-child(2) { left: 30%; animation-delay: 1s; }
+        .lightning-streak:nth-child(3) { left: 60%; animation-delay: 2.5s; }
+        .lightning-streak:nth-child(4) { left: 90%; animation-delay: 1.5s; }
         @keyframes lightning-flash {
             0%, 90%, 100% { opacity: 0; }
             5%, 10% { opacity: 0.6; }
@@ -78,24 +68,30 @@
             5% { opacity: 0.8; transform: translateY(0); }
             10% { opacity: 0.4; transform: translateY(50%); }
         }
-        /* Header */
-        header {
-            position: sticky;
+        /* Sidebar Navigation */
+        .sidebar {
+            position: fixed;
             top: 0;
-            background: linear-gradient(90deg, #2A0A3A, #1E1E3A);
-            padding: 1rem;
-            box-shadow: 0 0 20px rgba(168, 85, 247, 0.7);
+            left: 0;
+            width: 250px;
+            height: 100vh;
+            background: linear-gradient(180deg, #2A0A3A, #1E1E3A);
+            padding: 2rem 1rem;
+            box-shadow: 2px 0 20px rgba(168, 85, 247, 0.7);
             z-index: 100;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            transition: transform 0.3s ease;
+        }
+        .sidebar.hidden {
+            transform: translateX(-100%);
         }
         .logo {
             font-family: 'Orbitron', sans-serif;
-            font-size: 2.2rem;
+            font-size: 2rem;
             color: #D8BFD8;
             text-shadow: 0 0 12px #A855F7, 0 0 25px #A855F7;
+            text-align: center;
             letter-spacing: 2px;
+            margin-bottom: 2rem;
             cursor: pointer;
             transition: transform 0.3s ease;
         }
@@ -104,6 +100,9 @@
         }
         .nav-toggle {
             display: none;
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
             flex-direction: column;
             justify-content: space-between;
             width: 30px;
@@ -127,30 +126,25 @@
         .nav-toggle.active span:nth-child(3) {
             transform: rotate(-45deg) translate(7px, -7px);
         }
-        nav ul {
+        .sidebar ul {
             list-style: none;
             display: flex;
-            justify-content: center;
-            gap: 2.5rem;
-            background: linear-gradient(45deg, rgba(30, 15, 60, 0.9), rgba(10, 0, 30, 0.9));
-            padding: 0.7rem 1.5rem;
-            border-radius: 30px;
-            border: 2px solid #A855F7;
-            box-shadow: 0 0 15px #64107e, inset 0 0 10px rgba(168, 85, 247, 0.3);
-            transition: all 0.3s ease;
+            flex-direction: column;
+            gap: 1.5rem;
         }
-        nav a {
+        .sidebar a {
             color: #E5E7EB;
             text-decoration: none;
             font-family: 'Orbitron', sans-serif;
             font-size: 1.2rem;
             font-weight: 700;
-            padding: 0.6rem 1.2rem;
+            padding: 0.6rem 1rem;
             border-radius: 20px;
             transition: all 0.3s ease;
             position: relative;
+            display: block;
         }
-        nav a::after {
+        .sidebar a::after {
             content: '';
             position: absolute;
             bottom: 0;
@@ -161,13 +155,13 @@
             background: #A855F7;
             transition: width 0.3s ease;
         }
-        nav a:hover {
+        .sidebar a:hover {
             color: #FFFFFF;
             text-shadow: 0 0 15px #A855F7, 0 0 25px #A855F7;
             background: rgba(168, 85, 247, 0.3);
             animation: electric-crackle 0.5s infinite;
         }
-        nav a:hover::after {
+        .sidebar a:hover::after {
             width: 90%;
         }
         @keyframes electric-crackle {
@@ -225,16 +219,15 @@
         }
         /* Hero Section */
         .hero-section {
-            padding: 5rem 1rem;
-            text-align: center;
-            background: linear-gradient(180deg, rgba(42, 10, 58, 0.8), rgba(30, 30, 58, 1));
-            position: relative;
-            overflow: hidden;
-            min-height: 80vh;
+            height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            text-align: center;
+            background: linear-gradient(180deg, rgba(42, 10, 58, 0.8), rgba(30, 30, 58, 1));
+            position: relative;
+            overflow: hidden;
         }
         .hero-section::before {
             content: '';
@@ -247,38 +240,38 @@
             z-index: 0;
         }
         .profile-img {
-            width: 180px;
-            height: 180px;
+            width: 200px;
+            height: 200px;
             object-fit: cover;
             border-radius: 50%;
             border: 4px solid #A855F7;
             box-shadow: 0 0 20px rgba(168, 85, 247, 0.6);
             z-index: 1;
-            margin-bottom: 1.5rem;
+            transition: transform 0.5s ease;
+        }
+        .profile-img:hover {
+            transform: scale(1.1);
         }
         .hero-section h1 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 3rem;
+            font-size: 3.5rem;
             color: #FFFFFF;
             text-shadow: 0 0 25px #A855F7, 0 0 50px #64107e;
+            margin-top: 1.5rem;
             z-index: 1;
+            animation: text-glow 2s ease-in-out infinite;
         }
         .hero-section p {
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             color: #D8BFD8;
             z-index: 1;
-            max-width: 600px;
-            margin: 0 auto;
         }
         .highlight {
             color: #A855F7;
         }
-        .hero-cta {
-            margin-top: 2rem;
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
+        @keyframes text-glow {
+            0%, 100% { text-shadow: 0 0 25px #A855F7; }
+            50% { text-shadow: 0 0 50px #A855F7, 0 0 75px #64107e; }
         }
         /* Section Titles */
         .section-title {
@@ -289,177 +282,127 @@
             margin-bottom: 2rem;
             text-align: center;
         }
-        .section-subtitle {
-            font-family: 'Orbitron', sans-serif;
-            color: #E5E7EB;
-            font-size: 1.3rem;
-            font-weight: 600;
-            text-align: center;
-        }
-        /* About Section */
-        .about-section {
+        /* Content Cards */
+        .content-section {
             padding: 4rem 1rem;
-            background: linear-gradient(45deg, rgba(30, 15, 60, 0.9), rgba(10, 0, 30, 0.9));
-            border-radius: 15px;
-            margin: 2rem 0;
-            box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
-        }
-        .about-content {
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
-            text-align: center;
         }
-        .about-content p {
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
         }
-        /* Interests & Hobbies */
-        .interests-hobbies-section {
-            padding: 4rem 1rem;
-        }
-        .interest-img, .hobby-img {
-            width: 100%;
-            max-height: 200px;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
-        }
-        .interest-img:hover, .hobby-img:hover {
-            transform: scale(1.05);
-        }
-        .hobby-carousel {
-            display: flex;
-            overflow-x: auto;
-            gap: 1.5rem;
-            padding-bottom: 1rem;
-        }
-        .hobby-item {
-            flex: 0 0 150px;
-            text-align: center;
-        }
-        /* Education Section */
-        .education-section {
-            padding: 4rem 1rem;
+        .content-card {
             background: linear-gradient(45deg, rgba(30, 15, 60, 0.9), rgba(10, 0, 30, 0.9));
+            border: 2px solid #A855F7;
             border-radius: 15px;
-            box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
-        }
-        .education-timeline .timeline-wrapper {
+            padding: 1.5rem;
+            box-shadow: 0 0 15px rgba(168, 85, 247, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
-            padding-left: 60px;
+            overflow: hidden;
         }
-        .education-timeline .timeline-wrapper::before {
-            content: '';
+        .content-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 25px rgba(168, 85, 247, 0.6);
+        }
+        .content-card h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: #A855F7;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 5px #A855F7;
+        }
+        .content-card p, .content-card li {
+            color: #E5E7EB;
+            font-size: 1rem;
+        }
+        .content-card .icon {
             position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 20px;
-            width: 3px;
+            top: 10px;
+            right: 10px;
             background: #A855F7;
-        }
-        .education-timeline .timeline-item {
-            position: relative;
-            margin-bottom: 2rem;
-            display: flex;
-            align-items: flex-start;
-        }
-        .education-timeline .timeline-icon {
-            position: absolute;
-            left: -10px;
-            top: 0;
-            width: 50px;
-            height: 50px;
-            background: #A855F7;
-            border: 3px solid #1E1E3A;
+            color: #1E1E3A;
             border-radius: 50%;
+            width: 40px;
+            height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 2;
-            box-shadow: 0 0 10px rgba(168, 85, 247, 0.6);
+            font-size: 1.2rem;
+            box-shadow: 0 0 10px #A855F7;
         }
-        .education-timeline .timeline-icon img {
-            width: 70%;
-            height: 70%;
-            object-fit: contain;
-        }
-        .education-timeline .timeline-content {
-            margin-left: 60px;
-            background: #1E1E3A;
-            border-radius: 10px;
-            padding: 1rem;
-            box-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
-            transition: transform 0.3s ease;
-            width: calc(100% - 60px);
-        }
-        .education-timeline .timeline-content:hover {
-            transform: translateY(-5px);
-        }
-        .education-timeline .timeline-content h5 {
-            font-family: 'Orbitron', sans-serif;
-            color: #A855F7;
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-        }
-        .education-timeline .timeline-content p {
-            margin: 0;
-            color: #D8BFD8;
-            font-size: 0.95rem;
-        }
-        .education-timeline .timeline-content small {
-            color: #A9A9A9;
-            font-size: 0.85rem;
-        }
-        /* Skills Section */
-        .skills-section {
-            padding: 4rem 1rem;
-        }
+        /* Skills Bar */
         .skill {
-            margin-bottom: 1rem;
+            margin-bottom: 15px;
         }
         .skill p {
-            margin-bottom: 0.5rem;
+            margin-bottom: 6px;
             font-weight: 600;
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
         .bar {
             background: #333;
             border-radius: 20px;
             overflow: hidden;
-            height: 12px;
+            height: 10px;
         }
         .bar div {
             height: 100%;
             background: #A855F7;
             transition: width 0.5s ease;
         }
-        /* Projects Section */
-        .projects-section {
-            padding: 4rem 1rem;
-            background: linear-gradient(45deg, rgba(30, 15, 60, 0.9), rgba(10, 0, 30, 0.9));
-            border-radius: 15px;
-            box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
-        }
-        .project-card {
-            background: #1E1E3A;
-            border-radius: 10px;
-            padding: 1.5rem;
-            box-shadow: 0 0 15px rgba(168, 85, 247, 0.2);
+        /* Interests & Hobbies */
+        .interest-img, .hobby-img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
             transition: transform 0.3s ease;
         }
-        .project-card:hover {
+        .interest-img:hover, .hobby-img:hover {
+            transform: scale(1.05);
+        }
+        /* Education Timeline */
+        .education-card .timeline-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .education-item {
+            background: #1E1E3A;
+            border-radius: 10px;
+            padding: 1rem;
+            box-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
+            transition: transform 0.3s ease;
+        }
+        .education-item:hover {
             transform: translateY(-5px);
         }
-        .project-card h5 {
+        .education-item img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            margin-right: 1rem;
+        }
+        .education-item h5 {
             font-family: 'Orbitron', sans-serif;
             color: #A855F7;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+        .education-item p {
+            margin: 0;
+            color: #D8BFD8;
+            font-size: 0.9rem;
+        }
+        .education-item small {
+            color: #A9A9A9;
+            font-size: 0.8rem;
         }
         /* My Life Section */
-        .life-section {
-            padding: 4rem 1rem;
-        }
         .moment-item {
             position: relative;
             overflow: hidden;
@@ -472,11 +415,7 @@
             object-fit: cover;
             transition: transform 0.3s ease;
         }
-        .moment-video {
-            background: #000;
-        }
-        .moment-item:hover .moment-img,
-        .moment-item:hover .moment-video {
+        .moment-item:hover .moment-img, .moment-item:hover .moment-video {
             transform: scale(1.05);
         }
         .moment-caption {
@@ -491,197 +430,87 @@
             text-align: center;
         }
         /* Contact Section */
-        .contact-section {
-            padding: 4rem 1rem;
-            background: linear-gradient(45deg, rgba(30, 15, 60, 0.9), rgba(10, 0, 30, 0.9));
-            border-radius: 15px;
-            box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
-        }
         .contact-section .form-control {
-            background: #1E1E3A !important;
+            background: #1E1E3A;
             border: 1px solid #A855F7;
             color: #E5E7EB;
         }
         .contact-section .form-control:focus {
-            background: #1E1E3A !important;
+            background: #1E1E3A;
             border-color: #A855F7;
             box-shadow: 0 0 10px rgba(168, 85, 247, 0.6);
             color: #E5E7EB;
         }
         /* Footer */
-        footer {
-            padding: 3rem 1rem;
+        .footer {
+            padding: 4rem 2rem;
             background: linear-gradient(90deg, #2A0A3A, #0A0015);
-            text-align: center;
             box-shadow: 0 0 20px rgba(168, 85, 247, 0.7);
         }
-        footer p {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.1rem;
-            color: #E5E7EB;
-            text-shadow: 0 0 10px #A855F7, 0 0 20px #64107e;
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
-        footer a {
-            margin: 0 15px;
-            font-size: 2rem;
-            color: #E5E7EB;
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
-        footer a:hover {
+        .footer-grid h5 {
+            font-family: 'Orbitron', sans-serif;
             color: #A855F7;
-            transform: scale(1.1);
+            margin-bottom: 1rem;
         }
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 300%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.3), transparent);
-            animation: electric-wave 5s linear infinite;
+        .footer-grid a {
+            color: #E5E7EB;
+            text-decoration: none;
+            transition: color 0.3s ease;
         }
-        @keyframes electric-wave {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
+        .footer-grid a:hover {
+            color: #A855F7;
         }
-        @keyframes fadeIn {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
+        .footer-grid .social-icons a {
+            font-size: 1.8rem;
+            margin-right: 1rem;
+        }
+        .footer p {
+            text-align: center;
+            margin-top: 2rem;
+            color: #D8BFD8;
+            text-shadow: 0 0 10px #A855F7;
         }
         /* Responsive Adjustments */
         @media (max-width: 992px) {
-            .hero-section {
-                min-height: 60vh;
-                padding: 4rem 1rem;
+            .sidebar {
+                transform: translateX(-100%);
             }
+            .sidebar.active {
+                transform: translateX(0);
+            }
+            .nav-toggle {
+                display: flex;
+            }
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 576px) {
             .hero-section h1 {
                 font-size: 2.5rem;
             }
             .hero-section p {
-                font-size: 1.1rem;
+                font-size: 1.2rem;
             }
             .profile-img {
                 width: 150px;
                 height: 150px;
             }
-            nav ul {
-                gap: 1.5rem;
-            }
-            nav a {
-                font-size: 1rem;
-                padding: 0.5rem 1rem;
-            }
-        }
-        @media (max-width: 768px) {
-            header {
-                padding: 0.8rem;
-                flex-wrap: wrap;
-            }
-            .logo {
-                font-size: 1.8rem;
-            }
-            .nav-toggle {
-                display: flex;
-            }
-            nav ul {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                height: 100vh;
-                width: 250px;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                background: linear-gradient(90deg, #2A0A3A, #1E1E3A);
-                border-left: 2px solid #A855F7;
-                box-shadow: -5px 0 20px rgba(168, 85, 247, 0.7);
-                transition: right 0.3s ease;
-                z-index: 100;
-            }
-            nav ul.active {
-                right: 0;
-            }
-            nav a {
-                font-size: 1.3rem;
-                padding: 1rem;
-            }
-            .hero-section {
-                padding: 3rem 1rem;
-            }
-            .hero-section h1 {
-                font-size: 2rem;
-            }
-            .hero-section p {
-                font-size: 1rem;
-            }
-            .profile-img {
-                width: 130px;
-                height: 130px;
-            }
             .section-title {
                 font-size: 2rem;
+            }
+            .content-card h3 {
+                font-size: 1.5rem;
             }
             .moment-img, .moment-video {
                 height: 150px;
-            }
-            .interest-img, .hobby-img {
-                max-height: 150px;
-            }
-            .hobby-item {
-                flex: 0 0 120px;
-            }
-        }
-        @media (max-width: 576px) {
-            .logo {
-                font-size: 1.5rem;
-            }
-            nav ul {
-                width: 200px;
-            }
-            nav a {
-                font-size: 1.1rem;
-                padding: 0.8rem;
-            }
-            .hero-section {
-                padding: 2rem 1rem;
-            }
-            .hero-section h1 {
-                font-size: 1.8rem;
-            }
-            .hero-section p {
-                font-size: 0.9rem;
-            }
-            .profile-img {
-                width: 110px;
-                height: 110px;
-            }
-            .section-title {
-                font-size: 1.8rem;
-            }
-            .section-subtitle {
-                font-size: 1.1rem;
-            }
-            .moment-img, .moment-video {
-                height: 120px;
-            }
-            .moment-caption {
-                font-size: 0.8rem;
-                padding: 8px;
-            }
-            .interest-img, .hobby-img {
-                max-height: 120px;
-            }
-            .hobby-item {
-                flex: 0 0 100px;
-            }
-            .btn-electric, .btn-electric-outline {
-                padding: 0.5rem 1rem;
-                font-size: 0.9rem;
-            }
-            footer a {
-                font-size: 1.8rem;
-                margin: 0 10px;
             }
         }
     </style>
@@ -693,222 +522,231 @@
         <div class="lightning-streak"></div>
         <div class="lightning-streak"></div>
     </div>
-    <header>
+    <!-- Sidebar Navigation -->
+    <div class="nav-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <nav class="sidebar">
         <div class="logo">Dexter's Domain</div>
-        <div class="nav-toggle">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#hero-section">Home</a></li>
-                <li><a href="#about-section">About</a></li>
-                <li><a href="#contact-section">Contact</a></li>
-                <li><a href="photos.html">Photos</a></li>
-                <li><a href="videos.html">Videos</a></li>
-            </ul>
-        </nav>
-    </header>
+        <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="photos.html">Photos</a></li>
+            <li><a href="videos.html">Videos</a></li>
+        </ul>
+    </nav>
     <main>
         <!-- Hero Section -->
-        <section id="hero-section" class="hero-section">
-            <img src="assets/me.jpg" alt="Profile Photo" class="profile-img" data-aos="fade-in">
+        <section id="hero" class="hero-section">
+            <img src="assets/me.jpg" alt="Profile Photo" class="profile-img" data-aos="zoom-in">
             <h1 data-aos="fade-up">Dexter John</h1>
             <p data-aos="fade-up" data-aos-delay="100">
                 Aspiring <span class="highlight">IT Professional</span> | Passionate about <span class="highlight">Web Development</span>
             </p>
-            <div class="hero-cta" data-aos="fade-up" data-aos-delay="200">
-                <a href="#about-section" class="btn btn-electric">Learn More</a>
-                <a href="#contact-section" class="btn btn-electric-outline">Get in Touch</a>
-            </div>
         </section>
-
-        <!-- About Section -->
-        <section id="about-section" class="about-section container">
+        <!-- Content Sections -->
+        <section id="about" class="content-section">
             <h2 class="section-title" data-aos="fade-up">About Me</h2>
-            <div class="about-content" data-aos="fade-up" data-aos-delay="100">
-                <p>I'm an aspiring IT professional pursuing my degree, driven to build a meaningful career in tech.</p>
-                <p>My journey in web development is just beginning, but I'm captivated by the process of transforming code into functional, user-friendly websites.</p>
-                <p><em>Fun fact:</em> My energy is boundless — I can stay engaged and talk tech all day!</p>
-            </div>
-        </section>
-
-        <!-- Interests & Hobbies Section -->
-        <section id="interests-hobbies-section" class="interests-hobbies-section container">
-            <h2 class="section-title" data-aos="fade-up">Interests & Hobbies</h2>
-            <div class="mb-5">
-                <h3 class="section-subtitle mb-4" data-aos="fade-up">My Interests</h3>
-                <div class="row g-3" data-aos="fade-up" data-aos-delay="100">
-                    <div class="col-6 col-md-4">
-                        <div class="text-center">
+            <div class="content-grid">
+                <!-- About Me -->
+                <div class="content-card" data-aos="fade-up">
+                    <div class="icon"><i class="bi bi-person-fill"></i></div>
+                    <h3>About Me</h3>
+                    <p>I'm an aspiring IT professional pursuing my degree, driven to build a meaningful career in tech. My journey in web development is just beginning, but I'm captivated by the process of transforming code into functional, user-friendly websites.</p>
+                    <p>Coding is my passion, and I’m dedicated to creating clean, intuitive web interfaces. Each project I tackle deepens my curiosity and fuels my desire to learn and grow.</p>
+                    <p><em>Fun fact:</em> My energy is boundless — I can stay engaged and talk tech all day, especially when I'm immersed in a project I love.</p>
+                </div>
+                <!-- Interests -->
+                <div class="content-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="icon"><i class="bi bi-heart-fill"></i></div>
+                    <h3>My Interests</h3>
+                    <div class="row g-3">
+                        <div class="col-6">
                             <img src="assets/fliptop.jpg" alt="Fliptop Battles" class="interest-img">
                             <small class="text-muted mt-2 d-block">Fliptop Battles</small>
                         </div>
-                    </div>
-                    <div class="col-6 col-md-4">
-                        <div class="text-center">
+                        <div class="col-6">
                             <img src="assets/coding.jpg" alt="Dota 2" class="interest-img">
                             <small class="text-muted mt-2 d-block">Dota 2</small>
                         </div>
-                    </div>
-                    <div class="col-6 col-md-4">
-                        <div class="text-center">
+                        <div class="col-6">
                             <img src="assets/pixel.jpg" alt="Gaming" class="interest-img">
                             <small class="text-muted mt-2 d-block">General Gaming</small>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div>
-                <h3 class="section-subtitle mb-4" data-aos="fade-up">My Hobbies</h3>
-                <div class="hobby-carousel" data-aos="fade-up" data-aos-delay="100">
-                    <div class="hobby-item">
-                        <img src="assets/mlbb.jpg" alt="Mobile Legends" class="hobby-img">
-                        <small class="text-muted mt-2 d-block">Mobile Legends</small>
-                    </div>
-                    <div class="hobby-item">
-                        <img src="assets/billiards.jpg" alt="Billiards" class="hobby-img">
-                        <small class="text-muted mt-2 d-block">Playing Billiards</small>
-                    </div>
-                    <div class="hobby-item">
-                        <img src="assets/dota2.jpg" alt="Dota 2" class="hobby-img">
-                        <small class="text-muted mt-2 d-block">Dota 2</small>
-                    </div>
-                    <div class="hobby-item">
-                        <img src="assets/spotify.jpg" alt="Listening to Music" class="hobby-img">
-                        <small class="text-muted mt-2 d-block">Spotify Vibes</small>
+                <!-- Hobbies -->
+                <div class="content-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="icon"><i class="bi bi-joystick"></i></div>
+                    <h3>My Hobbies</h3>
+                    <div class="d-flex flex-wrap gap-3">
+                        <div class="text-center">
+                            <img src="assets/mlbb.jpg" alt="Mobile Legends" class="hobby-img">
+                            <small class="text-muted mt-2 d-block">Mobile Legends</small>
+                        </div>
+                        <div class="text-center">
+                            <img src="assets/billiards.jpg" alt="Billiards" class="hobby-img">
+                            <small class="text-muted mt-2 d-block">Playing Billiards</small>
+                        </div>
+                        <div class="text-center">
+                            <img src="assets/dota2.jpg" alt="Dota 2" class="hobby-img">
+                            <small class="text-muted mt-2 d-block">Dota 2</small>
+                        </div>
+                        <div class="text-center">
+                            <img src="assets/spotify.jpg" alt="Listening to Music" class="hobby-img">
+                            <small class="text-muted mt-2 d-block">Spotify Vibes</small>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- Education Section -->
-        <section id="education-section" class="education-section container">
-            <h2 class="section-title" data-aos="fade-up">My Education</h2>
-            <div class="education-timeline">
-                <div class="timeline-wrapper">
-                    <div class="timeline-item" data-aos="fade-right">
-                        <div class="timeline-icon">
+                <!-- Education -->
+                <div class="content-card education-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="icon"><i class="bi bi-mortarboard"></i></div>
+                    <h3>My Education</h3>
+                    <div class="timeline-wrapper">
+                        <div class="education-item d-flex align-items-center">
                             <img src="assets/Lumbang.png" alt="Elementary Icon">
+                            <div>
+                                <h5>Elementary School</h5>
+                                <p>Lumbang Elementary School <br><small>2007–2013</small></p>
+                            </div>
                         </div>
-                        <div class="timeline-content">
-                            <h5>Elementary School</h5>
-                            <p>Lumbang Elementary School <br><small>2007–2013</small></p>
-                        </div>
-                    </div>
-                    <div class="timeline-item" data-aos="fade-right" data-aos-delay="100">
-                        <div class="timeline-icon">
+                        <div class="education-item d-flex align-items-center">
                             <img src="assets/afg.png" alt="High School Icon">
+                            <div>
+                                <h5>Secondary School</h5>
+                                <p>AFG Bernardino Memorial Trade School <br><small>2013–2017</small></p>
+                            </div>
                         </div>
-                        <div class="timeline-content">
-                            <h5>Secondary School</h5>
-                            <p>AFG Bernardino Memorial Trade School <br><small>2013–2017</small></p>
-                        </div>
-                    </div>
-                    <div class="timeline-item" data-aos="fade-right" data-aos-delay="200">
-                        <div class="timeline-icon">
+                        <div class="education-item d-flex align-items-center">
                             <img src="assets/nu.png" alt="College Icon">
-                        </div>
-                        <div class="timeline-content">
-                            <h5>Tertiary School</h5>
-                            <p>BSIT @ National University <br><small>2023–Present</small></p>
+                            <div>
+                                <h5>Tertiary School</h5>
+                                <p>BSIT @ National University <br><small>2023–Present</small></p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- Skills Section -->
-        <section id="skills-section" class="skills-section container">
-            <h2 class="section-title" data-aos="fade-up">My Skills</h2>
-            <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="100">
-                <div class="col-md-8">
+                <!-- Journey -->
+                <div class="content-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="icon"><i class="bi bi-code-slash"></i></div>
+                    <h3>My Journey</h3>
+                    <p>I started coding in high school and instantly loved it. Since then, I've built projects that helped me grow my front-end and back-end skills.</p>
+                </div>
+                <!-- Projects -->
+                <div class="content-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="icon"><i class="bi bi-folder-fill"></i></div>
+                    <h3>Projects</h3>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <h5>First Project</h5>
+                            <p>Introductory site built using Bootstrap 5.</p>
+                            <a href="https://xedeusz.github.io/bs5/" target="_blank" class="btn btn-electric">View Project</a>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Project 2</h5>
+                            <p>Description here</p>
+                            <a href="https://github.com/yourusername/project2" target="_blank" class="btn btn-electric">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- My Life -->
+                <div class="content-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="icon"><i class="bi bi-heart-fill"></i></div>
+                    <h3>My Life</h3>
+                    <p>Explore some of my favorite moments through photos and videos!</p>
+                    <div class="d-flex gap-3 mb-3">
+                        <a href="photos.html" class="btn btn-electric">View Photos</a>
+                        <a href="videos.html" class="btn btn-electric-outline">View Videos</a>
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-6 col-md-4">
+                            <div class="moment-item">
+                                <img src="assets/moment1.jpg" alt="Friends at the beach" class="moment-img">
+                                <div class="moment-caption">Beach day with friends</div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4">
+                            <div class="moment-item">
+                                <video class="moment-video" controls>
+                                    <source src="assets/video1.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <div class="moment-caption">Game night highlights</div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4">
+                            <div class="moment-item">
+                                <img src="assets/moment2.jpg" alt="Group hike" class="moment-img">
+                                <div class="moment-caption">Hiking adventure</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Skills -->
+                <div class="content-card" data-aos="fade-up" data-aos-delay="700">
+                    <div class="icon"><i class="bi bi-wrench"></i></div>
+                    <h3>Skills</h3>
                     <div class="skill"><p>HTML</p><div class="bar"><div style="width: 90%"></div></div></div>
                     <div class="skill"><p>CSS & Bootstrap</p><div class="bar"><div style="width: 85%"></div></div></div>
                     <div class="skill"><p>JavaScript</p><div class="bar"><div style="width: 75%"></div></div></div>
                     <div class="skill"><p>PHP & MySQL</p><div class="bar"><div style="width: 80%"></div></div></div>
                 </div>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects-section" class="projects-section container">
-            <h2 class="section-title" data-aos="fade-up">My Projects</h2>
-            <div class="row g-4">
-                <div class="col-md-6" data-aos="fade-right">
-                    <div class="project-card">
-                        <h5>First Project</h5>
-                        <p>Introductory site built using Bootstrap 5.</p>
-                        <a href="https://xedeusz.github.io/bs5/" target="_blank" class="btn btn-electric">View Project</a>
-                    </div>
-                </div>
-                <div class="col-md-6" data-aos="fade-left">
-                    <div class="project-card">
-                        <h5>Project 2</h5>
-                        <p>Description here</p>
-                        <a href="https://github.com/yourusername/project2" target="_blank" class="btn btn-electric">View Project</a>
-                    </div>
+                <!-- Achievements -->
+                <div class="content-card" data-aos="fade-up" data-aos-delay="800">
+                    <div class="icon"><i class="bi bi-award-fill"></i></div>
+                    <h3>Certifications & Achievements</h3>
+                    <ul>
+                        <li>Certified Web Developer – XYZ Academy</li>
+                        <li>2nd Place – Intercollegiate Hackathon 2023</li>
+                    </ul>
                 </div>
             </div>
         </section>
-
-        <!-- My Life Section -->
-        <section id="life-section" class="life-section container">
-            <h2 class="section-title" data-aos="fade-up">My Life</h2>
-            <p class="text-center mb-4" data-aos="fade-up" data-aos-delay="100">Explore some of my favorite moments!</p>
-            <div class="d-flex justify-content-center gap-3 mb-4" data-aos="fade-up" data-aos-delay="200">
-                <a href="photos.html" class="btn btn-electric">View Photos</a>
-                <a href="videos.html" class="btn btn-electric-outline">View Videos</a>
-            </div>
-            <div class="row g-3">
-                <div class="col-6 col-md-4" data-aos="zoom-in">
-                    <div class="moment-item">
-                        <img src="assets/moment1.jpg" alt="Friends at the beach" class="moment-img">
-                        <div class="moment-caption">Beach day with friends</div>
-                    </div>
-                </div>
-                <div class="col-6 col-md-4" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="moment-item">
-                        <video class="moment-video" controls>
-                            <source src="assets/video1.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                        <div class="moment-caption">Game night highlights</div>
-                    </div>
-                </div>
-                <div class="col-6 col-md-4" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="moment-item">
-                        <img src="assets/moment2.jpg" alt="Group hike" class="moment-img">
-                        <div class="moment-caption">Hiking adventure</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- Contact Section -->
-        <section id="contact-section" class="contact-section container">
+        <section id="contact" class="content-section contact-section">
             <h2 class="section-title" data-aos="fade-up">Contact Me</h2>
-            <form action="https://formspree.io/f/yourID" method="POST" class="mx-auto" style="max-width: 500px;" data-aos="fade-up" data-aos-delay="100">
-                <input type="text" name="name" placeholder="Your Name" required class="form-control mb-3">
-                <input type="email" name="_replyto" placeholder="Your Email" required class="form-control mb-3">
-                <textarea name="message" placeholder="Your Message" required class="form-control mb-3" rows="5"></textarea>
-                <button type="submit" class="btn btn-electric w-100">Send Message</button>
-            </form>
+            <div class="content-card" data-aos="fade-up" data-aos-delay="100" style="max-width: 600px; margin: 0 auto;">
+                <div class="icon"><i class="bi bi-envelope-fill"></i></div>
+                <h3>Contact Form</h3>
+                <form action="https://formspree.io/f/yourID" method="POST">
+                    <input type="text" name="name" placeholder="Your Name" required class="form-control mb-3">
+                    <input type="email" name="_replyto" placeholder="Your Email" required class="form-control mb-3">
+                    <textarea name="message" placeholder="Your Message" required class="form-control mb-3" rows="5"></textarea>
+                    <button type="submit" class="btn btn-electric w-100">Send Message</button>
+                </form>
+            </div>
         </section>
     </main>
-
     <!-- Footer -->
-    <footer>
-        <p>© 2025 Xedeusz. All Rights Reserved.</p>
-        <div>
-            <a href="https://www.linkedin.com/in/dexterjohn" target="_blank" class="bi bi-linkedin"></a>
-            <a href="https://github.com/DexterJohn" target="_blank" class="bi bi-github"></a>
-            <a href="https://facebook.com/Dexter John De Guzman" target="_blank" class="bi bi-facebook"></a>
-            <a href="https://www.instagram.com/dexterjohn" target="_blank" class="bi bi-instagram"></a>
+    <footer class="footer">
+        <div class="footer-grid">
+            <div>
+                <h5>About</h5>
+                <p>Aspiring IT professional passionate about web development.</p>
+            </div>
+            <div>
+                <h5>Quick Links</h5>
+                <a href="#hero">Home</a><br>
+                <a href="#about">About</a><br>
+                <a href="#contact">Contact</a><br>
+                <a href="photos.html">Photos</a><br>
+                <a href="videos.html">Videos</a>
+            </div>
+            <div>
+                <h5>Connect</h5>
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com/in/dexterjohn" target="_blank" class="bi bi-linkedin"></a>
+                    <a href="https://github.com/DexterJohn" target="_blank" class="bi bi-github"></a>
+                    <a href="https://facebook.com/Dexter John De Guzman" target="_blank" class="bi bi-facebook"></a>
+                    <a href="https://www.instagram.com/dexterjohn" target="_blank" class="bi bi-instagram"></a>
+                </div>
+            </div>
         </div>
+        <p>© 2025 Xedeusz. All Rights Reserved.</p>
     </footer>
-
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -916,24 +754,24 @@
         AOS.init({ duration: 800, once: true });
 
         const navToggle = document.querySelector('.nav-toggle');
-        const navMenu = document.querySelector('nav ul');
+        const sidebar = document.querySelector('.sidebar');
 
         navToggle.addEventListener('click', () => {
             navToggle.classList.toggle('active');
-            navMenu.classList.toggle('active');
+            sidebar.classList.toggle('active');
         });
 
-        document.querySelectorAll('nav a').forEach(link => {
+        document.querySelectorAll('.sidebar a').forEach(link => {
             link.addEventListener('click', () => {
                 navToggle.classList.remove('active');
-                navMenu.classList.remove('active');
+                sidebar.classList.remove('active');
             });
         });
 
         document.addEventListener('click', (e) => {
-            if (!navMenu.contains(e.target) && !navToggle.contains(e.target) && navMenu.classList.contains('active')) {
+            if (!sidebar.contains(e.target) && !navToggle.contains(e.target) && sidebar.classList.contains('active')) {
                 navToggle.classList.remove('active');
-                navMenu.classList.remove('active');
+                sidebar.classList.remove('active');
             }
         });
 
