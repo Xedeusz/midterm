@@ -229,6 +229,7 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
             overflow: hidden;
+            margin-bottom: 2rem;
         }
         .content-card:hover {
             transform: translateY(-10px);
@@ -244,6 +245,7 @@
         .content-card p {
             color: #E5E7EB;
             font-size: 1rem;
+            margin-bottom: 1.5rem;
         }
         .content-card .icon {
             position: absolute;
@@ -274,7 +276,7 @@
         .moment-img, .moment-video {
             width: 100%;
             height: 100%;
-            object-fit: contain;
+            object-fit: cover;
             transition: transform 0.3s ease;
             display: block;
         }
@@ -284,17 +286,6 @@
         .moment-item:hover .moment-img,
         .moment-item:hover .moment-video {
             transform: scale(1.05);
-        }
-        .moment-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0, 0, 0, 0.7);
-            color: #E5E7EB;
-            padding: 10px;
-            font-size: 0.9rem;
-            text-align: center;
         }
         /* Footer */
         .footer {
@@ -358,6 +349,7 @@
                 aspect-ratio: 4 / 3;
             }
         }
+        
     </style>
 </head>
 <body>
@@ -379,7 +371,7 @@
             <li><a href="main.html#hero">Home</a></li>
             <li><a href="main.html#about">About</a></li>
             <li><a href="main.html#contact">Contact</a></li>
-            <li><a href="#photos">Moments</a></li>
+            <li><a href="#photos">Gallery</a></li>
         </ul>
     </nav>
     <main>
@@ -391,116 +383,95 @@
                 <div class="icon"><i class="bi bi-heart-fill"></i></div>
                 <h3>Personal Life</h3>
                 <p>Moments from my adventures and time with friends and family.</p>
-                <div class="row g-3">
+                <div class="row g-2">
                     <div class="col-6 col-md-4">
                         <div class="moment-item">
                             <img src="assets/plife1.jpg" alt="Beach trip" class="moment-img">
-                            <div class="moment-caption">Beach trip with friends</div>
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="moment-item">
                             <img src="assets/pl2.jpg" alt="Family gathering" class="moment-img">
-                            <div class="moment-caption">Family gathering</div>
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="moment-item">
                             <img src="assets/pl3.jpg" alt="City exploration" class="moment-img">
-                            <div class="moment-caption">Exploring the city</div>
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="moment-item">
-                            <img src="assets/tourna1.jpg" alt="Mountain hike" class="moment-img">
-                            <div class="moment-caption">Mountain hike</div>
+                            <img src="assets/og1.jpg" alt="Mountain hike" class="moment-img">
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="moment-item">
-                            <img src="assets/tourna2.jpg" alt="Birthday party" class="moment-img">
-                            <div class="moment-caption">Birthday party</div>
+                            <img src="assets/og2.jpg" alt="Birthday party" class="moment-img">
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="moment-item">
-                            <img src="assets/tourna3.jpg" alt="Road trip" class="moment-img">
-                            <div class="moment-caption">Road trip</div>
+                            <img src="assets/og3.jpg" alt="Road trip" class="moment-img">
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="moment-item">
-                            <img src="assets/tourna4.jpg" alt="Concert night" class="moment-img">
-                            <div class="moment-caption">Concert night</div>
+                            <img src="assets/og4.jpg" alt="Concert night" class="moment-img">
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="moment-item">
-                            <img src="assets/tourna5.jpg" alt="Camping" class="moment-img">
-                            <div class="moment-caption">Camping adventure</div>
+                            <img src="assets/og5.jpg" alt="Camping" class="moment-img">
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="moment-item">
-                            <img src="assets/tourna6.jpg" alt="Game night" class="moment-img">
-                            <div class="moment-caption">Game night</div>
+                            <img src="assets/pl4.jpg" alt="Game night" class="moment-img">
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="moment-item">
-                            <img src="assets/photo10.jpg" alt="Festival" class="moment-img">
-                            <div class="moment-caption">Local festival</div>
+                            <img src="assets/pl5.jpg" alt="Festival" class="moment-img">
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="moment-item">
                             <img src="assets/photo11.jpg" alt="Picnic" class="moment-img">
-                            <div class="moment-caption">Picnic day</div>
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="moment-item">
                             <img src="assets/photo12.jpg" alt="Art gallery" class="moment-img">
-                            <div class="moment-caption">Art gallery visit</div>
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="moment-item">
                             <img src="assets/photo13.jpg" alt="Ski trip" class="moment-img">
-                            <div class="moment-caption">Ski trip</div>
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="moment-item">
                             <img src="assets/photo14.jpg" alt="Volunteering" class="moment-img">
-                            <div class="moment-caption">Volunteering event</div>
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="moment-item">
                             <img src="assets/photo15.jpg" alt="Sunset watch" class="moment-img">
-                            <div class="moment-caption">Sunset watch</div>
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="moment-item">
-                            <video src="assets/video1.mp4" class="moment-video" controls>
-                                <div class="moment-caption">Beach party video</div>
-                            </video>
+                            <video src="assets/plv1.mp4" class="moment-video" controls></video>
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="moment-item">
-                            <video src="assets/video2.mp4" class="moment-video" controls>
-                                <div class="moment-caption">Family reunion video</div>
-                            </video>
+                            <video src="assets/plv2.mp4" class="moment-video" controls></video>
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="moment-item">
-                            <video src="assets/video3.mp4" class="moment-video" controls>
-                                <div class="moment-caption">City tour video</div>
-                            </video>
+                            <video src="assets/plv3.mp4" class="moment-video" controls></video>
                         </div>
                     </div>
                 </div>
@@ -508,118 +479,97 @@
             <!-- Old Gods -->
             <div class="content-card" data-aos="fade-up" data-aos-delay="100">
                 <div class="icon"><i class="bi bi-star-fill"></i></div>
-                <h3>Old Gods</h3>
-                <p>My fascination with mythology and ancient lore captured in photos.</p>
-                <div class="row g-3">
+                <h3>Hobby</h3>
+                <p></p>
+                <div class="row g-2">
                     <div class="col-6 col-md-4">
                         <div class="moment-item">
-                            <img src="assets/og1.jpg" alt="Ancient ruins" class="moment-img">
-                            <div class="moment-caption">Ancient ruins</div>
+                            <img src="assets/tourna1.jpg" alt="Ancient ruins" class="moment-img">
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="moment-item">
-                            <img src="assets/og2.jpg" alt="Temple visit" class="moment-img">
-                            <div class="moment-caption">Temple visit</div>
+                            <img src="assets/tourna2.jpg" alt="Temple visit" class="moment-img">
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="moment-item">
-                            <img src="assets/og3.jpg" alt="Mythology exhibit" class="moment-img">
-                            <div class="moment-caption">Mythology exhibit</div>
+                            <img src="assets/tourna3.jpg" alt="Mythology exhibit" class="moment-img">
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="moment-item">
-                            <img src="assets/og4.jpg" alt="Sacred site" class="moment-img">
-                            <div class="moment-caption">Sacred site</div>
+                            <img src="assets/tourna4.jpg" alt="Sacred site" class="moment-img">
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="moment-item">
-                            <img src="assets/og5.jpg" alt="Ancient artifact" class="moment-img">
-                            <div class="moment-caption">Ancient artifact</div>
+                            <img src="assets/tourna5.jpg" alt="Ancient artifact" class="moment-img">
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="moment-item">
-                            <img src="assets/6.jpg" alt="Mythical statue" class="moment-img">
-                            <div class="moment-caption">Mythical statue</div>
+                            <img src="assets/tourna6.jpg" alt="Mythical statue" class="moment-img">
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="moment-item">
-                            <img src="assets/myth7.jpg" alt="Ritual site" class="moment-img">
-                            <div class="moment-caption">Ritual site</div>
+                            <img src="assets/tourna7.jpg" alt="Ritual site" class="moment-img">
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="moment-item">
-                            <img src="assets/myth8.jpg" alt="Ancient script" class="moment-img">
-                            <div class="moment-caption">Ancient script</div>
+                            <img src="assets/tourna8.jpg" alt="Ancient script" class="moment-img">
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="moment-item">
-                            <img src="assets/myth9.jpg" alt="God statue" class="moment-img">
-                            <div class="moment-caption">God statue</div>
+                            <img src="assets/tourna9.jpg" alt="God statue" class="moment-img">
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="moment-item">
-                            <img src="assets/myth10.jpg" alt="Mythical cave" class="moment-img">
-                            <div class="moment-caption">Mythical cave</div>
+                            <img src="assets/tourna10.jpg" alt="Mythical cave" class="moment-img">
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="moment-item">
-                            <img src="assets/myth11.jpg" alt="Sacred grove" class="moment-img">
-                            <div class="moment-caption">Sacred grove</div>
+                            <img src="assets/tourna11.jpg" alt="Sacred grove" class="moment-img">
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="moment-item">
-                            <img src="assets/myth12.jpg" alt="Temple ruins" class="moment-img">
-                            <div class="moment-caption">Temple ruins</div>
+                            <img src="assets/tourna12.jpg" alt="Temple ruins" class="moment-img">
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="moment-item">
-                            <img src="assets/myth13.jpg" alt="Mythical fountain" class="moment-img">
-                            <div class="moment-caption">Mythical fountain</div>
+                            <img src="assets/tourna13.jpg" alt="Mythical fountain" class="moment-img">
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="moment-item">
-                            <img src="assets/myth14.jpg" alt="Ancient altar" class="moment-img">
-                            <div class="moment-caption">Ancient altar</div>
+                            <img src="assets/tourna14.jpg" alt="Ancient altar" class="moment-img">
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="moment-item">
-                            <img src="assets/myth15.jpg" alt="Sacred mountain" class="moment-img">
-                            <div class="moment-caption">Sacred mountain</div>
+                            <img src="assets/tourna15.jpg" alt="Sacred mountain" class="moment-img">
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="moment-item">
-                            <video src="assets/myth_video1.mp4" class="moment-video" controls>
-                                <div class="moment-caption">Ruins exploration video</div>
-                            </video>
+                            <video src="assets/myth_video1.mp4" class="moment-video" controls></video>
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="moment-item">
-                            <video src="assets/myth_video2.mp4" class="moment-video" controls>
-                                <div class="moment-caption">Temple tour video</div>
-                            </video>
+                            <video src="assets/myth_video2.mp4" class="moment-video" controls></video>
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="moment-item">
-                            <video src="assets/myth_video3.mp4" class="moment-video" controls>
-                                <div class="moment-caption">Mythology event video</div>
-                            </video>
+                            <video src="assets/myth_video3.mp4" class="moment-video" controls></video>
                         </div>
                     </div>
                 </div>
@@ -629,116 +579,95 @@
                 <div class="icon"><i class="bi bi-mortarboard"></i></div>
                 <h3>School</h3>
                 <p>Memories from my academic journey and campus life.</p>
-                <div class="row g-3">
+                <div class="row g-2">
                     <div class="col-6 col-md-4">
                         <div class="moment-item">
                             <img src="assets/school1.jpg" alt="Campus event" class="moment-img">
-                            <div class="moment-caption">Campus tech event</div>
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="moment-item">
                             <img src="assets/school2.jpg" alt="Study group" class="moment-img">
-                            <div class="moment-caption">Study group session</div>
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="moment-item">
                             <img src="assets/school3.jpg" alt="Graduation" class="moment-img">
-                            <div class="moment-caption">High school graduation</div>
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="moment-item">
                             <img src="assets/school4.jpg" alt="Science fair" class="moment-img">
-                            <div class="moment-caption">Science fair</div>
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="moment-item">
                             <img src="assets/school5.jpg" alt="Club meeting" class="moment-img">
-                            <div class="moment-caption">Coding club meeting</div>
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="moment-item">
                             <img src="assets/school6.jpg" alt="Sports day" class="moment-img">
-                            <div class="moment-caption">Sports day</div>
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="moment-item">
                             <img src="assets/school7.jpg" alt="Library study" class="moment-img">
-                            <div class="moment-caption">Library study session</div>
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="moment-item">
                             <img src="assets/school8.jpg" alt="Art class" class="moment-img">
-                            <div class="moment-caption">Art class project</div>
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="moment-item">
                             <img src="assets/school9.jpg" alt="Debate team" class="moment-img">
-                            <div class="moment-caption">Debate team practice</div>
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="moment-item">
                             <img src="assets/school10.jpg" alt="School play" class="moment-img">
-                            <div class="moment-caption">School play</div>
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="moment-item">
                             <img src="assets/school11.jpg" alt="Field trip" class="moment-img">
-                            <div class="moment-caption">Museum field trip</div>
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="moment-item">
                             <img src="assets/school12.jpg" alt="Hackathon" class="moment-img">
-                            <div class="moment-caption">School hackathon</div>
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="moment-item">
                             <img src="assets/school13.jpg" alt="Prom night" class="moment-img">
-                            <div class="moment-caption">Prom night</div>
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="moment-item">
                             <img src="assets/school14.jpg" alt="Career day" class="moment-img">
-                            <div class="moment-caption">Career day</div>
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="moment-item">
                             <img src="assets/school15.jpg" alt="School fair" class="moment-img">
-                            <div class="moment-caption">School fair</div>
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="moment-item">
-                            <video src="assets/school_video1.mp4" class="moment-video" controls>
-                                <div class="moment-caption">Campus event video</div>
-                            </video>
+                            <video src="assets/school_video1.mp4" class="moment-video" controls></video>
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="moment-item">
-                            <video src="assets/school_video2.mp4" class="moment-video" controls>
-                                <div class="moment-caption">Graduation ceremony video</div>
-                            </video>
+                            <video src="assets/school_video2.mp4" class="moment-video" controls></video>
                         </div>
                     </div>
                     <div class="col-6 col-md-4">
                         <div class="moment-item">
-                            <video src="assets/school_video3.mp4" class="moment-video" controls>
-                                <div class="moment-caption">Sports day video</div>
-                            </video>
+                            <video src="assets/school_video3.mp4" class="moment-video" controls></video>
                         </div>
                     </div>
                 </div>
@@ -748,9 +677,7 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-grid container text-center">
-            
             <div>
-
                 <h5>Connect</h5>
                 <div class="social-icons">
                     <a href="https://www..com/in/dexterjohn" target="_blank" class="bi bi-linkedin"></a>

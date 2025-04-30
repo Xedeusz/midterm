@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dexter's Domain - Messages</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Montserrat:wght@400;700&family=Anton&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(to bottom, #1E1E3A, #0A0015);
+            color: #E5E7EB;
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        #vanta-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+            transform: rotateZ(45deg);
+        }
+        .night {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        .shooting_star {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            height: 2px;
+            background: linear-gradient(-45deg, rgba(248, 248, 248, 0.87), rgba(96, 0, 109, 0.993));
+            border-radius: 999px;
+            filter: drop-shadow(0 0 6px rgb(226, 219, 224));
+            animation: tail 3000ms ease-in-out infinite, shooting 3000ms ease-in-out infinite;
+        }
+        .shooting_star::before,
+        .shooting_star::after {
+            content: '';
+            position: absolute;
+            top: calc(50% - 1px);
+            right: 0;
+            height: 2px;
+            background: linear-gradient(-45deg, rgba(167, 116, 164, 0.986), rgb(151, 45, 116), rgb(102, 0, 109));
+            border-radius: 100%;
+            animation: shining 3000ms ease-in-out infinite;
+        }
+        .shooting_star::before {
+            transform: translateX(50%) rotateZ(45deg);
+        }
+        .shooting_star::after {
+            transform: translateX(50%) rotateZ(-45deg);
+        }
+        .shooting_star:nth-child(1) { top: calc(50% - 100px); left: calc(50% - 200px); animation-delay: 1234ms; }
+        .shooting_star:nth-child(1)::before, .shooting_star:nth-child(1)::after { animation-delay: 1234ms; }
+        .shooting_star:nth-child(2) { top: calc(50% - 50px); left: calc(50% - 150px); animation-delay: 5678ms; }
+        .shooting_star:nth-child(2)::before, .shooting_star:nth-child(2)::after { animation-delay: 5678ms; }
+        .shooting_star:nth-child(3) { top: calc(50% - 200px); left: calc(50% - 100px); animation-delay: 2345ms; }
+        .shooting_star:nth-child(3)::before, .shooting_star:nth-child(3)::after { animation-delay: 2345ms; }
+        .shooting_star:nth-child(4) { top: calc(50% - 150px); left: calc(50% - 250px); animation-delay: 7890ms; }
+        .shooting_star:nth-child(4)::before, .shooting_star:nth-child(4)::after { animation-delay: 7890ms; }
+        .shooting_star:nth-child(5) { top: calc(50% - 80px); left: calc(50% - 300px); animation-delay: 3456ms; }
+        .shooting_star:nth-child(5)::before, .shooting_star:nth-child(5)::after { animation-delay: 3456ms; }
+        .shooting_star:nth-child(6) { top: calc(50% - 120px); left: calc(50% - 180px); animation-delay: 9012ms; }
+        .shooting_star:nth-child(6)::before, .shooting_star:nth-child(6)::after { animation-delay: 9012ms; }
+        .shooting_star:nth-child(7) { top: calc(50% - 60px); left: calc(50% - 220px); animation-delay: 4567ms; }
+        .shooting_star:nth-child(7)::before, .shooting_star:nth-child(7)::after { animation-delay: 4567ms; }
+        .shooting_star:nth-child(8) { top: calc(50% - 180px); left: calc(50% - 140px); animation-delay: 6789ms; }
+        .shooting_star:nth-child(8)::before, .shooting_star:nth-child(8)::after { animation-delay: 6789ms; }
+        .shooting_star:nth-child(9) { top: calc(50% - 90px); left: calc(50% - 260px); animation-delay: 123ms; }
+        .shooting_star:nth-child(9)::before, .shooting_star:nth-child(9)::after { animation-delay: 123ms; }
+        .shooting_star:nth-child(10) { top: calc(50% - 140px); left: calc(50% - 170px); animation-delay: 8901ms; }
+        .shooting_star:nth-child(10)::before, .shooting_star:nth-child(10)::after { animation-delay: 8901ms; }
+        .shooting_star:nth-child(11) { top: calc(50% - 110px); left: calc(50% - 210px); animation-delay: 234ms; }
+        .shooting_star:nth-child(11)::before, .shooting_star:nth-child(11)::after { animation-delay: 234ms; }
+        .shooting_star:nth-child(12) { top: calc(50% - 70px); left: calc(50% - 190px); animation-delay: 567ms; }
+        .shooting_star:nth-child(12)::before, .shooting_star:nth-child(12)::after { animation-delay: 567ms; }
+        .shooting_star:nth-child(13) { top: calc(50% - 160px); left: calc(50% - 130px); animation-delay: 789ms; }
+        .shooting_star:nth-child(13)::before, .shooting_star:nth-child(13)::after { animation-delay: 789ms; }
+        .shooting_star:nth-child(14) { top: calc(50% - 130px); left: calc(50% - 240px); animation-delay: 901ms; }
+        .shooting_star:nth-child(14)::before, .shooting_star:nth-child(14)::after { animation-delay: 901ms; }
+        .shooting_star:nth-child(15) { top: calc(50% - 85px); left: calc(50% - 160px); animation-delay: 345ms; }
+        .shooting_star:nth-child(15)::before, .shooting_star:nth-child(15)::after { animation-delay: 345ms; }
+        .shooting_star:nth-child(16) { top: calc(50% - 190px); left: calc(50% - 200px); animation-delay: 678ms; }
+        .shooting_star:nth-child(16)::before, .shooting_star:nth-child(16)::after { animation-delay: 678ms; }
+        .shooting_star:nth-child(17) { top: calc(50% - 95px); left: calc(50% - 270px); animation-delay: 1234ms; }
+        .shooting_star:nth-child(17)::before, .shooting_star:nth-child(17)::after { animation-delay: 1234ms; }
+        .shooting_star:nth-child(18) { top: calc(50% - 125px); left: calc(50% - 110px); animation-delay: 5678ms; }
+        .shooting_star:nth-child(18)::before, .shooting_star:nth-child(18)::after { animation-delay: 5678ms; }
+        .shooting_star:nth-child(19) { top: calc(50% - 175px); left: calc(50% - 230px); animation-delay: 2345ms; }
+        .shooting_star:nth-child(19)::before, .shooting_star:nth-child(19)::after { animation-delay: 2345ms; }
+        .shooting_star:nth-child(20) { top: calc(50% - 105px); left: calc(50% - 180px); animation-delay: 7890ms; }
+        .shooting_star:nth-child(20)::before, .shooting_star:nth-child(20)::after { animation-delay: 7890ms; }
+        @keyframes tail {
+            0% { width: 0; }
+            30% { width: 100px; }
+            100% { width: 0; }
+        }
+        @keyframes shining {
+            0% { width: 0; }
+            50% { width: 30px; }
+            100% { width: 0; }
+        }
+        @keyframes shooting {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(300px); }
+        }
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            height: 100vh;
+            background: linear-gradient(180deg, #2A0A3A, #1E1E3A);
+            padding: 2rem 1rem;
+            box-shadow: 2px 0 20px rgba(168, 85, 247, 0.7);
+            z-index: 100;
+            transition: transform 0.3s ease;
+        }
+        .sidebar.hidden {
+            transform: translateX(-100%);
+        }
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            color: #D8BFD8;
+            text-shadow: 0 0 12px #A855F7, 0 0 25px #A855F7;
+            text-align: center;
+            letter-spacing: 2px;
+            margin-bottom: 2rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        .nav-toggle {
+            display: none;
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 20px;
+            cursor: pointer;
+            z-index: 101;
+        }
+        .nav-toggle span {
+            width: 100%;
+            height: 3px;
+            background: #A855F7;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        .nav-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .nav-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .nav-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+        .sidebar ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .sidebar a {
+            color: #E5E7EB;
+            text-decoration: none;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            padding: 0.6rem 1rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+            display: block;
+        }
+        .sidebar a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: #A855F7;
+            transition: width 0.3s ease;
+        }
+        .sidebar a:hover {
+            color: #FFFFFF;
+            text-shadow: 0 0 15px #A855F7, 0 0 25px #A855F7;
+            background: rgba(168, 85, 247, 0.3);
+            animation: electric-crackle 0.5s infinite;
+        }
+        .sidebar a:hover::after {
+            width: 90%;
+        }
+        @keyframes electric-crackle {
+            0%, 100% { box-shadow: 0 0 5px #A855F7; }
+            50% { box-shadow: 0 0 15px #A855F7, 0 0 25px #A855F7; }
+        }
+        .btn-electric {
+            background: linear-gradient(45deg, #A855F7, #64107e);
+            color: #FFFFFF;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .btn-electric:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 15px rgba(168, 85, 247, 0.6);
+            color: #FFFFFF;
+            text-decoration: none;
+        }
+        .btn-electric::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: 0.5s;
+        }
+        .btn-electric:hover::before {
+            left: 100%;
+        }
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            color: #A855F7;
+            text-shadow: 0 0 10px #A855F7;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .content-section {
+            padding: 4rem 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .content-card {
+            background: linear-gradient(45deg, rgba(30, 15, 60, 0.9), rgba(10, 0, 30, 0.9));
+            border: 2px solid #A855F7;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 0 15px rgba(168, 85, 247, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .content-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 25px rgba(168, 85, 247, 0.6);
+        }
+        .content-card h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: #A855F7;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 5px #A855F7;
+        }
+        .content-card p {
+            color: #E5E7EB;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        .content-card .icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #A855F7;
+            color: #1E1E3A;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 0 10px #A855F7;
+        }
+        .message-field {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .message-field i {
+            color: #A855F7;
+            font-size: 1.2rem;
+        }
+        .message-field span {
+            font-weight: 600;
+            color: #D8BFD8;
+        }
+        .footer {
+            padding: 4rem 2rem;
+            background: linear-gradient(90deg, #2A0A3A, #0A0015);
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.7);
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .footer-grid h5 {
+            font-family: 'Orbitron', sans-serif;
+            color: #A855F7;
+            margin-bottom: 1rem;
+        }
+        .footer-grid a {
+            color: #E5E7EB;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .footer-grid a:hover {
+            color: #A855F7;
+        }
+        .footer-grid .social-icons a {
+            font-size: 1.8rem;
+            margin-right: 1rem;
+        }
+        .footer p {
+            text-align: center;
+            margin-top: 2rem;
+            color: #D8BFD8;
+            text-shadow: 0 0 10px #A855F7;
+        }
+        @media (max-width: 992px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+            .sidebar.active {
+                transform: translateX(0);
+            }
+            .nav-toggle {
+                display: flex;
+            }
+        }
+        @media (max-width: 576px) {
+            .section-title {
+                font-size: 2rem;
+            }
+            .content-card h3 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="vanta-background" class="night">
+        <div class="shooting_star"></div>
+        <div class="shooting_star"></div>
+        <div class="shooting_star"></div>
+        <div class="shooting_star"></div>
+        <div class="shooting_star"></div>
+        <div class="shooting_star"></div>
+        <div class="shooting_star"></div>
+        <div class="shooting_star"></div>
+        <div class="shooting_star"></div>
+        <div class="shooting_star"></div>
+        <div class="shooting_star"></div>
+        <div class="shooting_star"></div>
+        <div class="shooting_star"></div>
+        <div class="shooting_star"></div>
+        <div class="shooting_star"></div>
+        <div class="shooting_star"></div>
+        <div class="shooting_star"></div>
+        <div class="shooting_star"></div>
+        <div class="shooting_star"></div>
+        <div class="shooting_star"></div>
+    </div>
+    <div class="nav-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <nav class="sidebar">
+        <div class="logo">Dexter's Domain</div>
+        <ul>
+            <li><a href="main.html#hero">Home</a></li>
+            <li><a href="main.html#about">About</a></li>
+            <li><a href="main.html#contact">Contact</a></li>
+            <li><a href="photos.html">Gallery</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section class="content-section">
+            <h2 class="section-title" data-aos="fade-up">Received Message</h2>
+            <div class="content-card" data-aos="fade-up" data-aos-delay="100" style="max-width: 600px; margin: 0 auto;">
+                <div class="icon"><i class="bi bi-envelope-fill"></i></div>
+                <h3>Message Details</h3>
+                <div class="message-field">
+                    <i class="bi bi-person-fill"></i>
+                    <span>Name:</span>
+                    <p id="message-name">No name provided</p>
+                </div>
+                <div class="message-field">
+                    <i class="bi bi-envelope-fill"></i>
+                    <span>Email:</span>
+                    <p id="message-email">No email provided</p>
+                </div>
+                <div class="message-field">
+                    <i class="bi bi-chat-fill"></i>
+                    <span>Message:</span>
+                    <p id="message-text">No message provided</p>
+                </div>
+                <div class="message-field">
+                    <i class="bi bi-send-fill"></i>
+                    <span>Sent to:</span>
+                    <p id="message-recipient">akotosidek@gmail.com</p>
+                </div>
+                <div class="d-flex justify-content-center mt-4">
+                    <a href="main.html#contact" class="btn btn-electric">Back to Contact</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="footer-grid container text-center">
+            <div>
+                <h5>Connect</h5>
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com/in/dexterjohn" target="_blank" class="bi bi-linkedin"></a>
+                    <a href="https://github.com/DexterJohn" target="_blank" class="bi bi-github"></a>
+                    <a href="https://facebook.com/Dexter John De Guzman" target="_blank" class="bi bi-facebook"></a>
+                    <a href="https://www.instagram.com/ndexcz" target="_blank" class="bi bi-instagram"></a>
+                </div>
+            </div>
+        </div>
+        <p>© 2025 Xedeusz. All Rights Reserved.</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true });
+
+        const navToggle = document.querySelector('.nav-toggle');
+        const sidebar = document.querySelector('.sidebar');
+
+        navToggle.addEventListener('click', () => {
+            navToggle.classList.toggle('active');
+            sidebar.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.sidebar a').forEach(link => {
+            link.addEventListener('click', () => {
+                navToggle.classList.remove('active');
+                sidebar.classList.remove('active');
+            });
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!sidebar.contains(e.target) && !navToggle.contains(e.target) && sidebar.classList.contains('active')) {
+                navToggle.classList.remove('active');
+                sidebar.classList.remove('active');
+            }
+        });
+
+        // Parse URL parameters and display message details
+        const urlParams = new URLSearchParams(window.location.search);
+        const name = urlParams.get('name') || 'No name provided';
+        const email = urlParams.get('email') || 'No email provided';
+        const message = urlParams.get('message') || 'No message provided';
+
+        document.getElementById('message-name').textContent = name;
+        document.getElementById('message-email').textContent = email;
+        document.getElementById('message-text').textContent = message;
+    </script>
+</body>
+</html>
