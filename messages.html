@@ -228,6 +228,8 @@
             position: relative;
             overflow: hidden;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
         }
         .btn-electric:hover {
             transform: translateY(-3px);
@@ -433,7 +435,7 @@
                 <div class="message-field">
                     <i class="bi bi-send-fill"></i>
                     <span>Sent to:</span>
-                    <p id="message-recipient">akotosidek@gmail.com</p>
+                    <p id="message-recipient">dexterjohn.deguzman@gmail.com</p>
                 </div>
                 <div class="d-flex justify-content-center mt-4">
                     <a href="main.html#contact" class="btn btn-electric">Back to Contact</a>
@@ -482,15 +484,33 @@
             }
         });
 
-        // Parse URL parameters and display message details
-        const urlParams = new URLSearchParams(window.location.search);
-        const name = urlParams.get('name') || 'No name provided';
-        const email = urlParams.get('email') || 'No email provided';
-        const message = urlParams.get('message') || 'No message provided';
+        // Display message details with proper decoding
+        try {
+            const urlParams = new URLSearchParams(window.location.search);
 
-        document.getElementById('message-name').textContent = name;
-        document.getElementById('message-email').textContent = email;
-        document.getElementById('message-text').textContent = message;
+            // Retrieve and decode parameters
+            const name = decodeURIComponent(urlParams.get('name') || 'No name provided');
+            const email = decodeURIComponent(urlParams.get('email') || 'No email provided');
+            const message = decodeURIComponent(urlParams.get('message') || 'No message provided');
+
+            // Sanitize values to prevent XSS
+            const sanitize = (str) => {
+                const div = document.createElement('div');
+                div.textContent = str;
+                return div.innerHTML;
+            };
+
+            // Update DOM with sanitized, decoded values
+            document.getElementById('message-name').textContent = sanitize(name);
+            document.getElementById('message-email').textContent = sanitize(email);
+            document.getElementById('message-text').textContent = sanitize(message);
+            document.getElementById('message-recipient').textContent = 'akotosidek@gmail.com';
+        } catch (error) {
+            console.error('Error processing message:', error);
+            document.getElementById('message-name').textContent = 'Error loading name';
+            document.getElementById('message-email').textContent = 'Error loading email';
+            document.getElementById('message-text').textContent = 'Error loading message';
+        }
     </script>
 </body>
 </html>
