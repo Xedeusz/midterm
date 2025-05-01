@@ -230,6 +230,8 @@
             position: relative;
             overflow: hidden;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
         }
         .btn-electric:hover {
             transform: translateY(-3px);
@@ -911,37 +913,57 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // Contact Form Validation with SweetAlert2
 const contactForm = document.getElementById('contact-form');
 contactForm.addEventListener('submit', function(e) {
-    e.preventDefault(); // Prevent default form submission
+    e.preventDefault();
+    try {
+        const name = document.querySelector('input[name="name"]').value.trim();
+        const email = document.querySelector('input[name="email"]').value.trim();
+        const message = document.querySelector('textarea[name="message"]').value.trim();
 
-    const name = document.querySelector('input[name="name"]').value.trim();
-    const email = document.querySelector('input[name="email"]').value.trim();
-    const message = document.querySelector('textarea[name="message"]').value.trim();
+        if (!name || !email || !message) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Please complete all the sections',
+                background: '#1E1E3A',
+                color: '#E5E7EB',
+                confirmButtonColor: '#A855F7'
+            });
+        } else {
+            const redirectToMessages = () => {
+                const params = new URLSearchParams();
+                params.append('name', encodeURIComponent(name));
+                params.append('email', encodeURIComponent(email));
+                params.append('message', encodeURIComponent(message));
+                params.append('t', Date.now());
+                window.location.href = `messages.html?${params.toString()}`;
+            };
 
-    if (!name || !email || !message) {
+            if (typeof Swal === 'undefined') {
+                alert('Message Sent Successfully!');
+                redirectToMessages();
+            } else {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success!',
+                    text: 'Message Sent Successfully!',
+                    background: '#1E1E3A',
+                    color: '#E5E7EB',
+                    confirmButtonColor: '#A855F7'
+                }).then(() => {
+                    redirectToMessages();
+                });
+                setTimeout(redirectToMessages, 3000); // Fallback redirect
+            }
+        }
+    } catch (error) {
+        console.error('Form submission error:', error);
         Swal.fire({
             icon: 'error',
-            title: 'Oops...',
-            text: 'Please complete all the sections',
+            title: 'Error',
+            text: 'An error occurred. Please try again.',
             background: '#1E1E3A',
             color: '#E5E7EB',
             confirmButtonColor: '#A855F7'
-        });
-    } else {
-        Swal.fire({
-            icon: 'Success',
-            title: 'Success!',
-            text: 'Message Sent Successfully!',
-            background: '#1E1E3A',
-            color: '#E5E7EB',
-            confirmButtonColor: '#A855F7'
-        }).then(() => {
-            // Construct URL with GET parameters and redirect
-            const params = new URLSearchParams({
-                name: name,
-                email: email,
-                message: message
-            });
-            window.location.href = `messages.html?${params.toString()}`;
         });
     }
 });
