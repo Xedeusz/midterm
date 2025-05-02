@@ -257,7 +257,7 @@
             border: 2px solid #A855F7;
             padding: 0.75rem 1.5rem;
             border-radius: 25px;
-            font-family: 'Orbit siguenron', sans-serif;
+            font-family: 'Orbitron', sans-serif;
             font-weight: 600;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
@@ -369,21 +369,46 @@
         .content-card h3 {
             font-family: 'Orbitron', sans-serif;
             color: #A855F7;
-            font-size: 1.8rem;
+            font-size: 2.2rem;
             margin-bottom: 1.5rem;
             text-shadow: 0 0 5px #A855F7;
+            font-weight: 700;
         }
         .content-card h4 {
             font-family: 'Orbitron', sans-serif;
             color: #A855F7;
-            font-size: 1.4rem;
+            font-size: 1.8rem;
             margin-bottom: 1rem;
             text-shadow: 0 0 5px #A855F7;
+            font-weight: 700;
         }
         .content-card p, .content-card li {
+            font-family: 'Montserrat', sans-serif;
             color: #E5E7EB;
-            font-size: 1rem;
+            font-size: 1.1rem;
             margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+        #about .content-card p.about-text,
+        #about .content-card p.projects-text,
+        #about .content-card p.life-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #E5E7EB;
+            padding: 0.75rem;
+            margin-bottom: 1.5rem;
+            background: rgba(168, 85, 247, 0.1);
+            border-radius: 8px;
+            text-shadow: 0 0 3px rgba(168, 85, 247, 0.3);
+            transition: all 0.3s ease;
+        }
+        #about .content-card p.about-text:hover,
+        #about .content-card p.projects-text:hover,
+        #about .content-card p.life-text:hover {
+            background: rgba(168, 85, 247, 0.2);
+            text-shadow: 0 0 8px rgba(168, 85, 247, 0.5);
+            color: #FFFFFF;
         }
         .content-card .icon {
             position: absolute;
@@ -454,16 +479,18 @@
         }
         .things-i-do-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            grid-template-columns: repeat(2, 1fr); /* Changed to 2 columns */
             gap: 1.5rem;
             margin-top: 1rem;
             justify-items: center;
         }
         .interest-caption {
+            font-family: 'Montserrat', sans-serif;
             color: #D8BFD8;
-            font-size: 0.9rem;
+            font-size: 1rem;
             text-align: center;
             margin-top: 0.5rem;
+            font-weight: 600;
         }
         .education-card .timeline-wrapper {
             display: flex;
@@ -517,6 +544,7 @@
             transform: scale(1.05);
         }
         .moment-caption {
+            font-family: 'Montserrat', sans-serif;
             position: absolute;
             bottom: 0;
             left: 0;
@@ -524,8 +552,9 @@
             background: rgba(0, 0, 0, 0.7);
             color: #E5E7EB;
             padding: 10px;
-            font-size: 0.9rem;
+            font-size: 1rem;
             text-align: center;
+            font-weight: 600;
         }
         .content-card .row {
             margin-top: auto;
@@ -650,16 +679,34 @@
                 grid-template-columns: 1fr;
             }
             .things-i-do-grid {
-                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+                grid-template-columns: 1fr; /* Stack to 1 column on smaller screens */
             }
         }
         @media (max-width: 768px) {
             .things-i-do-grid {
-                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                grid-template-columns: 1fr; /* Stack to 1 column */
             }
             .interest-img {
                 width: 120px;
                 height: 120px;
+            }
+            .content-card h3 {
+                font-size: 1.8rem;
+            }
+            .content-card h4 {
+                font-size: 1.5rem;
+            }
+            #about .content-card p.about-text,
+            #about .content-card p.projects-text,
+            #about .content-card p.life-text {
+                font-size: 1rem;
+                padding: 0.5rem;
+            }
+            .interest-caption {
+                font-size: 0.9rem;
+            }
+            .moment-caption {
+                font-size: 0.9rem;
             }
         }
         @media (max-width: 576px) {
@@ -680,23 +727,30 @@
                 min-height: 350px;
             }
             .content-card h3 {
-                font-size: 1.5rem;
+                font-size: 1.6rem;
             }
-            .moment-img {
-                height: 120px;
+            .content-card h4 {
+                font-size: 1.3rem;
             }
-            .skill-name {
-                font-size: 1rem;
-            }
-            .skill-bar {
-                height: 10px;
+            #about .content-card p.about-text,
+            #about .content-card p.projects-text,
+            #about .content-card p.life-text {
+                font-size: 0.9rem;
+                padding: 0.5rem;
+                margin-bottom: 1rem;
             }
             .things-i-do-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr; /* Stack to 1 column */
             }
             .interest-img {
                 width: 120px;
                 height: 120px;
+            }
+            .interest-caption {
+                font-size: 0.8rem;
+            }
+            .moment-caption {
+                font-size: 0.8rem;
             }
         }
     </style>
@@ -752,9 +806,9 @@
                 <div class="content-card" data-aos="fade-up">
                     <div class="icon"><i class="bi bi-person-fill"></i></div>
                     <h3>About Me</h3>
-                    <p><strong>Introduction:</strong> I am Dexter John, a dedicated IT enthusiast currently pursuing a Bachelor of Science in Information Technology at National University. My academic journey is complemented by a growing expertise in web development, where I transform innovative ideas into robust, user-centric digital solutions.</p>
-                    <p><strong>Professional Mission:</strong> My career aspiration is to leverage cutting-edge technologies to solve real-world challenges, focusing on creating scalable web applications that enhance user experiences. With a foundation in HTML, CSS, JavaScript, and PHP, I am committed to continuous learning and adapting to industry trends to deliver exceptional results.</p>
-                    <p><strong>Personal Drive:</strong> Beyond technical skills, I bring an unwavering passion for problem-solving and a collaborative spirit. My boundless energy fuels my engagement in tech discussions and project development, where I thrive on turning concepts into reality with precision and creativity.</p>
+                    <p class="about-text"> I am Dexter John M. De Guzman, an aspiring IT professional currently pursuing a Bachelor of Science in Information Technology at National University. With a strong interest in web development, I specialize in translating innovative concepts into functional, user-focused digital solutions.</p>
+                    <p class="about-text"> My goal is to harness emerging technologies to address real-world challenges through the development of scalable and efficient web applications. Proficient in HTML, CSS, JavaScript, and PHP, I am committed to continuous learning and staying ahead of industry trends to consistently deliver high-quality outcomes.</p>
+                    <p class="about-text">Beyond technical proficiency, I bring a genuine passion for problem-solving and a collaborative mindset. I thrive in dynamic environments where I can contribute to meaningful projects, engage in thoughtful tech discussions, and transform ideas into reality with creativity, precision, and purpose.</p>
                     <hr class="custom-hr">
                     <h4>Things I Love</h4>
                     <div class="things-i-do-grid">
@@ -771,7 +825,7 @@
                             <div class="interest-caption">Cars</div>
                         </div>
                         <div class="text-center">
-                            <img src="assets/coffee.jpg" alt="Manga" class="interest-img">
+                            <img src="assets/coffee.jpg" alt="Coffee" class="interest-img">
                             <div class="interest-caption">Coffee</div>
                         </div>
                         <div class="text-center">
@@ -791,11 +845,11 @@
                             <div class="interest-caption">Mobile Legends</div>
                         </div>
                         <div class="text-center">
-                            <img src="assets/bball.jpg" alt="basketball" class="interest-img">
+                            <img src="assets/bball.jpg" alt="Basketball" class="interest-img">
                             <div class="interest-caption">Basketball</div>
                         </div>
                         <div class="text-center">
-                            <img src="assets/csgo.jpg" alt="csgo" class="interest-img">
+                            <img src="assets/csgo.jpg" alt="CSGO" class="interest-img">
                             <div class="interest-caption">CSGO</div>
                         </div>
                     </div>
@@ -830,7 +884,7 @@
                 <div class="content-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="icon"><i class="bi bi-folder-fill"></i></div>
                     <h3>Projects</h3>
-                    <p class="text-center">These are the projects I have made and published.</p>
+                    <p class="projects-text">Below are the projects I have developed and successfully published, showcasing my skills in web development and commitment to delivering functional, user-oriented solutions.</p>
                     <div class="project-button-container mt-3">
                         <a href="https://github.com/Xedeusz?tab=repositories" target="_blank" class="btn btn-electric">View Projects</a>
                     </div>
@@ -838,27 +892,27 @@
                 <div class="content-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="icon"><i class="bi bi-heart-fill"></i></div>
                     <h3>My Life</h3>
-                    <p>Explore some of my favorite moments through photos and videos!</p>
+                    <p class="life-text">Explore a collection of highlights and meaningful moments captured through photos and videos.</p>
                     <div class="d-flex justify-content-center mb-3">
                         <a href="photos.html" class="btn btn-electric">View Gallery</a>
                     </div>
                     <div class="row g-3">
                         <div class="col-6 col-md-4">
                             <div class="moment-item">
-                                <img src="assets/plife1.jpg" alt="Beach trip" class="moment-img">
-                                <div class="moment-caption">Beach trip</div>
+                                <img src="assets/pl2.jpg" alt="Personal Life" class="moment-img">
+                                <div class="moment-caption">Personal Life</div>
                             </div>
                         </div>
                         <div class="col-6 col-md-4">
                             <div class="moment-item">
-                                <img src="assets/tourna1.jpg" alt="Ancient ruins" class="moment-img">
-                                <div class="moment-caption">Ancient ruins</div>
+                                <img src="assets/tourna11.jpg" alt="Tournaments" class="moment-img">
+                                <div class="moment-caption">Tournaments</div>
                             </div>
                         </div>
                         <div class="col-6 col-md-4">
                             <div class="moment-item">
-                                <img src="assets/school1.jpg" alt="Campus event" class="moment-img">
-                                <div class="moment-caption">Campus event</div>
+                                <img src="assets/sc1.jpg" alt="School" class="moment-img">
+                                <div class="moment-caption">School</div>
                             </div>
                         </div>
                     </div>
@@ -1018,5 +1072,5 @@
             }
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9398a8f479ec7bab',t:'MTc0NjIwMDg3Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</body>
 </html>
