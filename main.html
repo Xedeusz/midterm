@@ -389,6 +389,7 @@
             margin-bottom: 1rem;
             line-height: 1.7;
         }
+        /* Specific styling for <p> in About Me, Projects, and My Life */
         #about .content-card p.about-text,
         #about .content-card p.projects-text,
         #about .content-card p.life-text {
@@ -479,7 +480,7 @@
         }
         .things-i-do-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr); /* Changed to 2 columns */
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 1.5rem;
             margin-top: 1rem;
             justify-items: center;
@@ -679,12 +680,12 @@
                 grid-template-columns: 1fr;
             }
             .things-i-do-grid {
-                grid-template-columns: 1fr; /* Stack to 1 column on smaller screens */
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             }
         }
         @media (max-width: 768px) {
             .things-i-do-grid {
-                grid-template-columns: 1fr; /* Stack to 1 column */
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             }
             .interest-img {
                 width: 120px;
@@ -739,8 +740,17 @@
                 padding: 0.5rem;
                 margin-bottom: 1rem;
             }
+            .moment-img {
+                height: 120px;
+            }
+            .skill-name {
+                font-size: 1rem;
+            }
+            .skill-bar {
+                height: 10px;
+            }
             .things-i-do-grid {
-                grid-template-columns: 1fr; /* Stack to 1 column */
+                grid-template-columns: 1fr;
             }
             .interest-img {
                 width: 120px;
@@ -825,7 +835,7 @@
                             <div class="interest-caption">Cars</div>
                         </div>
                         <div class="text-center">
-                            <img src="assets/coffee.jpg" alt="Coffee" class="interest-img">
+                            <img src="assets/coffee.jpg" alt="Manga" class="interest-img">
                             <div class="interest-caption">Coffee</div>
                         </div>
                         <div class="text-center">
@@ -845,16 +855,16 @@
                             <div class="interest-caption">Mobile Legends</div>
                         </div>
                         <div class="text-center">
-                            <img src="assets/bball.jpg" alt="Basketball" class="interest-img">
+                            <img src="assets/bball.jpg" alt="basketball" class="interest-img">
                             <div class="interest-caption">Basketball</div>
                         </div>
                         <div class="text-center">
-                            <img src="assets/csgo.jpg" alt="CSGO" class="interest-img">
+                            <img src="assets/csgo.jpg" alt="csgo" class="interest-img">
                             <div class="interest-caption">CSGO</div>
                         </div>
                     </div>
                     <hr class="custom-hr">
-                    <h4>My Education</h4>
+                    <h4>Education Background</h4>
                     <div class="timeline-wrapper">
                         <div class="education-item d-flex align-items-center">
                             <img src="assets/Lumbang.png" alt="Elementary Icon">
@@ -921,7 +931,7 @@
             <div class="content-grid-single">
                 <div class="content-card" data-aos="fade-up" data-aos-delay="300">
                     <div class="icon"><i class="bi bi-wrench"></i></div>
-                    <h3>Skills</h3>
+                    <h3>Core Competencies</h3>
                     <div class="skills-container">
                         <div class="skill-item">
                             <div class="skill-name">HTML</div>
