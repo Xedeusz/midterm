@@ -200,6 +200,11 @@
         .btn-electric:hover::before {
             left: 100%;
         }
+        /* Main Content */
+        main {
+            margin-left: 250px; /* Matches the sidebar width */
+            transition: margin-left 0.3s ease; /* Smooth transition when sidebar toggles */
+        }
         /* Section Titles */
         .section-title {
             font-family: 'Orbitron', sans-serif;
@@ -275,7 +280,7 @@
         }
         .moment-img, .moment-video {
             width: 300px; /* Fixed width for uniformity */
-            height: 169px; /* Fixed height based on 16:9 aspect ratio (300px * 9/16) */
+            height: 300px; /* Fixed height based on 16:9 aspect ratio (300px * 9/16) */
             object-fit: cover;
             transition: transform 0.3s ease;
             display: block;
@@ -348,6 +353,9 @@
             }
             .content-grid {
                 grid-template-columns: 1fr;
+            }
+            main {
+                margin-left: 0; /* Reset margin when sidebar is hidden */
             }
         }
         @media (max-width: 768px) {
@@ -698,7 +706,7 @@
             <div>
                 <h5>Connect</h5>
                 <div class="social-icons">
-                    <a href="https://www..com/in/dexterjohn" target="_blank" class="bi bi-linkedin"></a>
+                    <a href="https://www.linkedin.com/in/dexterjohn" target="_blank" class="bi bi-linkedin"></a>
                     <a href="https://github.com/DexterJohn" target="_blank" class="bi bi-github"></a>
                     <a href="https://facebook.com/Dexter John De Guzman" target="_blank" class="bi bi-facebook"></a>
                     <a href="https://www.instagram.com/ndexcz" target="_blank" class="bi bi-instagram"></a>
@@ -715,16 +723,23 @@
 
         const navToggle = document.querySelector('.nav-toggle');
         const sidebar = document.querySelector('.sidebar');
+        const main = document.querySelector('main');
 
         navToggle.addEventListener('click', () => {
             navToggle.classList.toggle('active');
             sidebar.classList.toggle('active');
+            if (sidebar.classList.contains('active')) {
+                main.style.marginLeft = '250px';
+            } else {
+                main.style.marginLeft = '0';
+            }
         });
 
         document.querySelectorAll('.sidebar a').forEach(link => {
             link.addEventListener('click', () => {
                 navToggle.classList.remove('active');
                 sidebar.classList.remove('active');
+                main.style.marginLeft = '0';
             });
         });
 
@@ -732,6 +747,7 @@
             if (!sidebar.contains(e.target) && !navToggle.contains(e.target) && sidebar.classList.contains('active')) {
                 navToggle.classList.remove('active');
                 sidebar.classList.remove('active');
+                main.style.marginLeft = '0';
             }
         });
 
