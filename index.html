@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,60 +19,101 @@
             overflow-x: hidden;
             position: relative;
         }
-        /* Purple Lightning Background for Entire Website */
-        .lightning-background {
+        #vanta-background {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, rgba(30, 15, 60, 0.8), rgba(10, 0, 30, 0.9));
             z-index: -1;
-            overflow: hidden;
+            background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+            transform: rotateZ(45deg);
         }
-        .lightning-background::before,
-        .lightning-background::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
+        .night {
+            position: relative;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at center, rgba(61, 0, 80, 0.3), transparent);
-            opacity: 0;
-            animation: lightning-flash 4s infinite;
         }
-        .lightning-background::after {
-            animation-delay: .5s;
-        }
-        .lightning-streak {
+        .shooting_star {
             position: absolute;
-            width: 2px;
-            height: 100%;
-            background: linear-gradient(to bottom, #3b003dd7, #f8f8f8);
-            opacity: 0;
-            animation: lightning-streak 3s infinite;
+            left: 50%;
+            top: 50%;
+            height: 2px;
+            background: linear-gradient(-45deg, rgb(255, 255, 255), rgba(186, 4, 231, 0.993));
+            border-radius: 999px;
+            filter: drop-shadow(0 0 6px rgb(202, 149, 187));
+            animation: tail 3000ms ease-in-out infinite, shooting 3000ms ease-in-out infinite;
         }
-        .lightning-streak:nth-child(2) {
-            left: 30%;
-            animation-delay: 1s;
+        .shooting_star::before,
+        .shooting_star::after {
+            content: '';
+            position: absolute;
+            top: calc(50% - 1px);
+            right: 0;
+            height: 2px;
+            background: linear-gradient(-45deg, rgba(238, 177, 234, 0.986), rgb(141, 14, 120), rgb(219, 97, 228));
+            border-radius: 100%;
+            animation: shining 3000ms ease-in-out infinite;
         }
-        .lightning-streak:nth-child(3) {
-            left: 60%;
-            animation-delay: 2.5s;
+        .shooting_star::before {
+            transform: translateX(50%) rotateZ(45deg);
         }
-        .lightning-streak:nth-child(4) {
-            left: 90%;
-            animation-delay: 1.5s;
+        .shooting_star::after {
+            transform: translateX(50%) rotateZ(-45deg);
         }
-        @keyframes lightning-flash {
-            0%, 90%, 100% { opacity: 0; }
-            5%, 10% { opacity: 0.6; }
+        .shooting_star:nth-child(1) { top: calc(50% - 100px); left: calc(50% - 200px); animation-delay: 1234ms; }
+        .shooting_star:nth-child(1)::before, .shooting_star:nth-child(1)::after { animation-delay: 1234ms; }
+        .shooting_star:nth-child(2) { top: calc(50% - 50px); left: calc(50% - 150px); animation-delay: 5678ms; }
+        .shooting_star:nth-child(2)::before, .shooting_star:nth-child(2)::after { animation-delay: 5678ms; }
+        .shooting_star:nth-child(3) { top: calc(50% - 200px); left: calc(50% - 100px); animation-delay: 2345ms; }
+        .shooting_star:nth-child(3)::before, .shooting_star:nth-child(3)::after { animation-delay: 2345ms; }
+        .shooting_star:nth-child(4) { top: calc(50% - 150px); left: calc(50% - 250px); animation-delay: 7890ms; }
+        .shooting_star:nth-child(4)::before, .shooting_star:nth-child(4)::after { animation-delay: 7890ms; }
+        .shooting_star:nth-child(5) { top: calc(50% - 80px); left: calc(50% - 300px); animation-delay: 3456ms; }
+        .shooting_star:nth-child(5)::before, .shooting_star:nth-child(5)::after { animation-delay: 3456ms; }
+        .shooting_star:nth-child(6) { top: calc(50% - 120px); left: calc(50% - 180px); animation-delay: 9012ms; }
+        .shooting_star:nth-child(6)::before, .shooting_star:nth-child(6)::after { animation-delay: 9012ms; }
+        .shooting_star:nth-child(7) { top: calc(50% - 60px); left: calc(50% - 220px); animation-delay: 4567ms; }
+        .shooting_star:nth-child(7)::before, .shooting_star:nth-child(7)::after { animation-delay: 4567ms; }
+        .shooting_star:nth-child(8) { top: calc(50% - 180px); left: calc(50% - 140px); animation-delay: 6789ms; }
+        .shooting_star:nth-child(8)::before, .shooting_star:nth-child(8)::after { animation-delay: 6789ms; }
+        .shooting_star:nth-child(9) { top: calc(50% - 90px); left: calc(50% - 260px); animation-delay: 123ms; }
+        .shooting_star:nth-child(9)::before, .shooting_star:nth-child(9)::after { animation-delay: 123ms; }
+        .shooting_star:nth-child(10) { top: calc(50% - 140px); left: calc(50% - 170px); animation-delay: 8901ms; }
+        .shooting_star:nth-child(10)::before, .shooting_star:nth-child(10)::after { animation-delay: 8901ms; }
+        .shooting_star:nth-child(11) { top: calc(50% - 110px); left: calc(50% - 210px); animation-delay: 234ms; }
+        .shooting_star:nth-child(11)::before, .shooting_star:nth-child(11)::after { animation-delay: 234ms; }
+        .shooting_star:nth-child(12) { top: calc(50% - 70px); left: calc(50% - 190px); animation-delay: 567ms; }
+        .shooting_star:nth-child(12)::before, .shooting_star:nth-child(12)::after { animation-delay: 567ms; }
+        .shooting_star:nth-child(13) { top: calc(50% - 160px); left: calc(50% - 130px); animation-delay: 789ms; }
+        .shooting_star:nth-child(13)::before, .shooting_star:nth-child(13)::after { animation-delay: 789ms; }
+        .shooting_star:nth-child(14) { top: calc(50% - 130px); left: calc(50% - 240px); animation-delay: 901ms; }
+        .shooting_star:nth-child(14)::before, .shooting_star:nth-child(14)::after { animation-delay: 901ms; }
+        .shooting_star:nth-child(15) { top: calc(50% - 85px); left: calc(50% - 160px); animation-delay: 345ms; }
+        .shooting_star:nth-child(15)::before, .shooting_star:nth-child(15)::after { animation-delay: 345ms; }
+        .shooting_star:nth-child(16) { top: calc(50% - 190px); left: calc(50% - 200px); animation-delay: 678ms; }
+        .shooting_star:nth-child(16)::before, .shooting_star:nth-child(16)::after { animation-delay: 678ms; }
+        .shooting_star:nth-child(17) { top: calc(50% - 95px); left: calc(50% - 270px); animation-delay: 1234ms; }
+        .shooting_star:nth-child(17)::before, .shooting_star:nth-child(17)::after { animation-delay: 1234ms; }
+        .shooting_star:nth-child(18) { top: calc(50% - 125px); left: calc(50% - 110px); animation-delay: 5678ms; }
+        .shooting_star:nth-child(18)::before, .shooting_star:nth-child(18)::after { animation-delay: 5678ms; }
+        .shooting_star:nth-child(19) { top: calc(50% - 175px); left: calc(50% - 230px); animation-delay: 2345ms; }
+        .shooting_star:nth-child(19)::before, .shooting_star:nth-child(19)::after { animation-delay: 2345ms; }
+        .shooting_star:nth-child(20) { top: calc(50% - 105px); left: calc(50% - 180px); animation-delay: 7890ms; }
+        .shooting_star:nth-child(20)::before, .shooting_star:nth-child(20)::after { animation-delay: 7890ms; }
+        @keyframes tail {
+            0% { width: 0; }
+            30% { width: 100px; }
+            100% { width: 0; }
         }
-        @keyframes lightning-streak {
-            0%, 85%, 100% { opacity: 0; transform: translateY(-100%); }
-            5% { opacity: 0.8; transform: translateY(0); }
-            10% { opacity: 0.4; transform: translateY(50%); }
+        @keyframes shining {
+            0% { width: 0; }
+            50% { width: 30px; }
+            100% { width: 0; }
+        }
+        @keyframes shooting {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(300px); }
         }
         header {
             position: sticky;
@@ -105,8 +145,6 @@
             transform: translateX(-50%);
             width: 100%;
             height: 130%;
-        
-     
             z-index: -1;
         }
         nav {
@@ -310,18 +348,6 @@
             0% { opacity: 0; transform: translateY(20px); }
             100% { opacity: 1; transform: translateY(0); }
         }
-        .lightning-effect {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent);
-            opacity: 0;
-            animation: lightning 2.5s infinite;
-            pointer-events: none;
-            z-index: 0;
-        }
         @media (max-width: 768px) {
             header {
                 padding: 0.8rem;
@@ -407,11 +433,27 @@
     </style>
 </head>
 <body>
-    <div class="lightning-background">
-        <div class="lightning-streak"></div>
-        <div class="lightning-streak"></div>
-        <div class="lightning-streak"></div>
-        <div class="lightning-streak"></div>
+    <div id="vanta-background" class="night">
+        <div class="shooting_star"></div>
+        <div class="shooting_star"></div>
+        <div class="shooting_star"></div>
+        <div class="shooting_star"></div>
+        <div class="shooting_star"></div>
+        <div class="shooting_star"></div>
+        <div class="shooting_star"></div>
+        <div class="shooting_star"></div>
+        <div class="shooting_star"></div>
+        <div class="shooting_star"></div>
+        <div class="shooting_star"></div>
+        <div class="shooting_star"></div>
+        <div class="shooting_star"></div>
+        <div class="shooting_star"></div>
+        <div class="shooting_star"></div>
+        <div class="shooting_star"></div>
+        <div class="shooting_star"></div>
+        <div class="shooting_star"></div>
+        <div class="shooting_star"></div>
+        <div class="shooting_star"></div>
     </div>
     <header>
         <nav>
@@ -431,7 +473,6 @@
     </header>
     <main>
         <section class="hero">
-            <div class="lightning-effect"></div>
             <div class="photo-frame">
                 <img src="assets/me.jpg" alt="Your Personal Photo">
             </div>
@@ -451,7 +492,6 @@
             navMenu.classList.toggle('active');
         });
 
-        // Close menu when a link is clicked
         document.querySelectorAll('nav a').forEach(link => {
             link.addEventListener('click', () => {
                 navToggle.classList.remove('active');
@@ -459,7 +499,6 @@
             });
         });
 
-        // Close menu when clicking outside
         document.addEventListener('click', (e) => {
             if (!navMenu.contains(e.target) && !navToggle.contains(e.target) && navMenu.classList.contains('active')) {
                 navToggle.classList.remove('active');
