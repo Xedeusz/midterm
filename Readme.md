@@ -52,44 +52,6 @@ SweetAlert2
 
 Assets: Images for profile, interests, education, and personal moments (stored in assets/ folder).
 
-Setup Instructions
-To run the project locally, follow these steps:
-
-Clone or Download the Repository:
-git clone https://github.com/Xedeusz/dexters-domain.git
-
-Alternatively, download the project files as a ZIP and extract them.
-
-Navigate to the Project Directory:
-cd dexters-domain
-
-
-Serve the Website: Since this is a static website, you can serve it using a local server. Options include:
-
-Using Python:
-python -m http.server 8000
-
-Then, open http://localhost:8000/index.html in your browser.
-
-Using Node.js (with http-server):
-npm install -g http-server
-http-server
-
-Open http://localhost:8080/index.html.
-
-Using VS Code: Use the Live Server extension to serve the files.
-
-
-
-Ensure Internet Connectivity: The project relies on external CDNs for Bootstrap, AOS, SweetAlert2, and Google Fonts. Ensure you have an internet connection for these resources to load.
-
-File Dependencies:
-
-Ensure the assets/ folder with images (e.g., me.jpg, spotify.jpg, etc.) is present in the project root.
-The photos.html and messages.html pages are referenced but not provided. You may need to create these files or adjust links if they are not part of the project.
-
-
-
 File Structure
 dexters-domain/
 ├── assets/
@@ -112,19 +74,10 @@ dexters-domain/
 │   ├── sc1.jpg
 ├── index.html
 ├── main.html
-├── photos.html (referenced, not provided)
-├── messages.html (referenced, not provided)
+├── photos.html 
+├── messages.html 
 └── README.md
 
-
-index.html: The landing page with an introductory hero section.
-main.html: The main portfolio page with detailed sections.
-assets/: Folder containing images for profile, interests, education, and moments.
-photos.html: Gallery page (not provided, assumed to display photos/videos).
-messages.html: Page to display contact form submissions (not provided).
-README.md: This file.
-
-Usage
 
 Landing Page (index.html):
 View the introductory hero section with a profile photo and a CTA button.
@@ -143,19 +96,6 @@ Responsive Navigation:
 On mobile devices, click the hamburger menu to toggle the sidebar.
 Links support smooth scrolling to sections within main.html.
 
-
-
-Contributing
-Contributions are welcome! To contribute:
-
-Fork the repository.
-Create a new branch (git checkout -b feature/your-feature).
-Make your changes and commit (git commit -m "Add your feature").
-Push to the branch (git push origin feature/your-feature).
-Open a Pull Request.
-
-Please ensure your code follows the existing style and includes appropriate documentation.
-License
 This project is licensed under the MIT License. See the LICENSE file for details.
 Contact
 For questions or feedback, reach out to Dexter John M. De Guzman:
